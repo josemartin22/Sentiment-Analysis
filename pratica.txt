@@ -1,3 +1,5 @@
+---------------- Correo del doctorado ----------------
+
 Buenas tardes,
 
 soy Miguel López Campos, estudiante de doctorado del grupo sci2s. Os explico en este correo en qué consiste la práctica alternativa al examen para los que traten el problema 5 de análisis de sentimientos. He creado un documento que adjunto con todos los detalles.
@@ -16,3 +18,5 @@ Cualquier duda me consultáis a mí o a Paco.
 Un saludo,
 
 Miguel.
+
+-------------------------------------------------------
