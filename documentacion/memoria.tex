@@ -225,12 +225,34 @@ Podemos pensar que un modelo con mayor exactitud que otro es mejor. Eso sería a
 \[ Recall = \frac{TP}{TP + FN} \]
 
 \vspace{4mm}
-\item \textbf{Media armónica ponderada o F1 score}: Puede ser interpretado como un promedio ponderado de la \textit{precisión} y el \textit{recall}, donde el rango de valores oscila entre 0 y 1. 
+\item \textbf{Media armónica ponderada o F-score}: Puede ser interpretado como un promedio ponderado de la \textit{precisión} y el \textit{recall} a través de un parámetro $\beta$ que permite otorgar una mayor importancia a una que otra, donde el rango de valores oscila entre 0 y 1. 
 
-\[ F1 = \frac{2}{\frac{1}{Recall}+\frac{1}{Precision}} = \frac{2*(Recall*Precision)}{Recall + Precision} \]
+\[ F1 = (1 + \beta^{2})*  \frac{Precision * Recall}{(\beta^{2}*Precision) + Recall} \]
 
-Se ayudará a penalizar los valores muy bajos en una u otra medida.
+\vspace{4mm}
+Se ayudará a penalizar los valores muy bajos en una u otra medida. Es frecuente que la precisión y el recall tengan el mismo peso en la fórmula, es decir, con un valor $\beta = 1$. A esta configuración se le conoce como \textbf{F1-score} y es el que \textbf{utilizaremos}.\\ Es de la forma:
+
+\[ \frac{2*Precision*Recall}{Precision + Recall} \]
+\vspace{4mm}
 \end{enumerate}
+
+Para el caso en el que se cuenten con \textbf{más de 2 clases} (solo lo tendremos en cuenta al utilizar modelos preentrenados, ya que predeciremos tanto polaridad negativa, neutra y positiva. En nuestro conjunto de entrenamiento solo tenemos polaridad positiva y negativa), se debe \textbf{calcular} cada una de las \textbf{métricas anteriores} para \textbf{cada clase} y combinarlas  entre ellas para obtener una \textbf{medida global}. 
+\vspace{2mm}\\
+La función \texttt{classification\_report} de \textit{sklearn} nos proporciona: 
+
+\begin{enumerate}
+
+\item \textbf{Macro-averaging}: Se calculan las medias para cada una de las clases, tanto de precisión, recall y f1-score. Esta medida no tiene en cuenta el posible desbalanceo entre el número de ejemplos de cada clase. Por ejemplo para el caso de la precisión sería:
+
+\[ Macro-precision = \frac{\sum_{i=1}^{n}Precision_i}{n} \]
+\vspace{2mm}
+
+\item \textbf{Weighted-averaging}: Resuelve el problema de tener un $corpus$ desbalanceado y con más de dos clases. Se pondera cada componente de la fórmula en base al peso que cada clase tiene dentro del sistema. De nuevo, para el caso de la precisión sería: 
+
+ \[ Weighted-precision = \frac{\sum_{i=1}^{n}Precision_i * P_i}{n} \]
+
+\end{enumerate}
+
 
 \vspace{4mm}
 Comentar que los algoritmos anteriormente nombrados serán entrenados mediante \textbf{validación cruzada} o \textit{cross-validation}, de forma que se reducirá la dependencia entre la partición de los datos usada para la fase de entrenamiento y test. 
@@ -275,6 +297,8 @@ A partir de ellos se extraerán las características que representen a los mensa
 
 \subsection{Reducción de las características}
 
+\begin{comment}
+
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[scale=0.3]{images/neg.png}
@@ -291,6 +315,7 @@ A partir de ellos se extraerán las características que representen a los mensa
 \caption{Top 50 términos positivos antes y después de preprocesar}
 \end{figure}
 
+\end{comment}
 
 \subsection{Ponderación de las características}
 
