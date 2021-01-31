@@ -16,4 +16,7 @@
 \BOOKMARK [2][-]{subsection.3.2.5}{Ponderaci\363n de las caracter\355sticas}{section.3.2}% 16
 \BOOKMARK [1][-]{section.3.3}{Comparaci\363n y an\341lisis de los modelos empleados}{chapter.3}% 17
 \BOOKMARK [1][-]{section.3.4}{Modelos m\341s avanzados}{chapter.3}% 18
-\BOOKMARK [0][-]{chapter.4}{Trabajo Futuro}{}% 19
+\BOOKMARK [2][-]{subsection.3.4.1}{Word2vec}{section.3.4}% 19
+\BOOKMARK [2][-]{subsection.3.4.2}{BERT}{section.3.4}% 20
+\BOOKMARK [2][-]{subsection.3.4.3}{Modelos de Deep Learning \(LSTM\)}{section.3.4}% 21
+\BOOKMARK [0][-]{chapter.4}{Trabajo Futuro}{}% 22

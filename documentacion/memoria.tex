@@ -40,6 +40,42 @@
 {2cm}                           % espacio entre el texto y el pie de página
 
 
+%----------------------------
+\usepackage{algorithm}          %código
+\usepackage{algpseudocode}
+\usepackage[mathscr]{euscript}  %Letras de tipo Euler -> $\mathscr{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+\usepackage{listings}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%---------------------------------------------------------
+% Para incluir el código de python
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\definecolor{lightgray}{gray}{0.95}
+%---------------------------------------------------------
+
 % ---------------- Encabezados y pie de pagina ----------------
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -87,7 +123,7 @@
 
 \chapter{Descripción y análisis del problema}
 
-En \textbf{análisis de sentimientos} consiste en el uso de técnicas de Procesamiento del Lenguaje Natural, analítica de textos y lingüística computacional para identificar y extraer información subjetiva u opinión expresada en texto. 
+El \textbf{análisis de sentimientos} consiste en el uso de técnicas de Procesamiento del Lenguaje Natural, analítica de textos y lingüística computacional para identificar y extraer información subjetiva u opinión expresada en texto. 
 \vspace{2mm}\\
 Se utiliza en sistemas de recomendación, filtrado de mensajes/spam, en aplicaciones de negocios para predecir tendencias en función de las reseñas de los clientes o incluso seguir las opiniones sobre política, elaborar normas en función de la opinión de la gente (inteligencia de gobierno), etc...
 \vspace{2mm}\\
@@ -103,7 +139,8 @@ El análisis de sentimientos se puede llevar a cabo a 3 niveles distintos en fun
 \end{itemize}
 \vspace{2mm}
 
-En nuestro caso nos \textbf{centraremos} en el primer nivel,  la \textbf{clasificación} de la \textbf{polaridad} de una frase de opinión (en concreto de tweets), esto es, decidir si en una frase el autor muestra un sentimiento positivo, negativo o neutro.
+{\setlength{\parindent}{0cm}
+En nuestro caso nos \textbf{centraremos} en el primer nivel,  la \textbf{clasificación} de la \textbf{polaridad} de una frase de opinión (en concreto de tweets), esto es, decidir si en una frase el autor muestra un sentimiento positivo, negativo o neutro.}
 \vspace{2mm}\\
 Se trabajará sobre el
 conjunto de datos en el dominio de Tweets del conjunto de datos \texttt{Sentiment140}, formado por
@@ -120,7 +157,8 @@ como polaridad positiva (clase ‘4’) y polaridad negativa (clase ‘0’).
 
 \section{Métodos para la clasificación de documentos}
 
-La clasificación de un documento en función a la polaridad del sentimiento que expresa, puede llevarse a cabo de diversas formas. No hay un consenso (como en la mayoría de campos de la inteligencia artificial) sobre qué técnicas o algoritmos se deben usar para obtener mejores resultados en la clasificación de textos en unas situaciones u otras. 
+{\setlength{\parindent}{0cm}
+La clasificación de un documento en función a la polaridad del sentimiento que expresa, puede llevarse a cabo de diversas formas. No hay un consenso (como en la mayoría de campos de la inteligencia artificial) sobre qué técnicas o algoritmos se deben usar para obtener mejores resultados en la clasificación de textos en unas situaciones u otras. }
 \vspace{2mm}\\
 Aun así, podemos diferenciar los dos grandes grupos en los se encuentran dichas técnicas:
 
@@ -145,28 +183,33 @@ Dichos algoritmos basan su funcionamiento en relaciones matemáticas creadas ent
 
 \end{enumerate}
 
-El enfoque no supervisado es elegante pero necesita apoyarse de alguna forma en datos que aporten una cierta orientación y sirvan de base de conocimiento. Por ello nos \textbf{centraremos} en métodos de \textbf{aprendizaje supervisado}.
+{\setlength{\parindent}{0cm}
+El enfoque no supervisado es elegante pero necesita apoyarse de alguna forma en datos que aporten una cierta orientación y sirvan de base de conocimiento. Por ello nos \textbf{centraremos} en métodos de \textbf{aprendizaje supervisado}.}
 
 \vspace{6mm}
 \section{Naive Bayes}
 
-La familia de algoritmos Naive Bayes se basan en el conocido \textit{Teorema de Bayes}: \\
+{\setlength{\parindent}{0cm}
+La familia de algoritmos Naive Bayes se basan en el conocido \textit{Teorema de Bayes}:} \\
 
-\textit{Sea \{$A_1$, $A_2$, ... , $A_n$\} un conjunto de sucesos mútuamente excluyentes y exhaustivos, y tales que la probabilidad de cada uno de ellos es distinta de cero. Sea B un suceso cualquiera del que se conocen las probabilidades condicionales $P(B|A_i)$.
+{\setlength{\parindent}{0cm}
+\textit{Sea \{$A_1$, $A_2$, ... , $A_n$\} un conjunto de sucesos mútuamente excluyentes y exhaustivos, y tales que la probabilidad de cada uno de ellos es distinta de cero. Sea B un suceso cualquiera del que se conocen las probabilidades condicionales $P(B|A_i)$.}
 \vspace{2mm}\\
 Entonces la probabilidad de $P(A_i |B)$ viene dada por la expresión:}
 \vspace{4mm}
 \[ P(A_i | B) = \frac{P(B|A_i) * P(A_i)}{P(B)}  \]
 
 \vspace{4mm}
-Para el caso de clasificación de textos, los sucesos son mútuamente excluyentes ya que no podemos considerar (en nuestro caso un tweet) que es de polaridad positiva y negativa al mismo tiempo y además son exhaustivos ya que esa calificación (positivo, negativo y neutro) son los únicos tipos que existen. 
+{\setlength{\parindent}{0cm}
+Para el caso de clasificación de textos, los sucesos son mútuamente excluyentes ya que no podemos considerar (en nuestro caso un tweet) que es de polaridad positiva y negativa al mismo tiempo y además son exhaustivos ya que esa calificación (positivo, negativo y neutro) son los únicos tipos que existen.}
 \vspace{2mm}\\
 Además consideraremos que las palabras de un mismo mensaje no tienen ningún tipo de relación entre sí y por lo tanto es indiferente la posición que tienen dentro del texto al que pertenecen. (Esta condición es conocida en este ámbito como la suposición de bolsa de palabras o \textit{bag of words}). 
 
 \vspace{6mm}
 \section{Máquinas de vectores de soporte}
 
-Las máquinas de vectores de soporte (del inglés, Support Vector Machine o SVM) son un grupo de algoritmos de aprendizaje supervisado en los que se trata de encontrar un hiperplano separador (denominado vector de soporte) que separe con la mayor distancia posible las distintas clases a las que pertenecen cada uno de los elementos. 
+{\setlength{\parindent}{0cm}
+Las máquinas de vectores de soporte (del inglés, Support Vector Machine o SVM) son un grupo de algoritmos de aprendizaje supervisado en los que se trata de encontrar un hiperplano separador (denominado vector de soporte) que separe con la mayor distancia posible las distintas clases a las que pertenecen cada uno de los elementos.} 
 \vspace{2mm}\\
 De esta forma, el vector determina la frontera que sirve para clasificar un nuevo elemento. 
 \vspace{2mm}\\
@@ -187,7 +230,8 @@ Y otro de ellos es $gamma$ que determina la distancia máxima a partir de la cua
 
 \section{Métricas de evaluación}
 
-Para determinar el rendimiento de los resultados obtenidos por los distintos algoritmos, es necesario establecer unas métricas o medidas de evaluación que permitan evaluar de manera objetiva su eficacia a la hora de clasificar los ejemplos que se le proporiconen a éstos.
+{\setlength{\parindent}{0cm}
+Para determinar el rendimiento de los resultados obtenidos por los distintos algoritmos, es necesario establecer unas métricas o medidas de evaluación que permitan evaluar de manera objetiva su eficacia a la hora de clasificar los ejemplos que se le proporiconen a éstos.}
 \vspace{4mm}\\
 Para ello, es importante tener en cuenta los cuatro posibles estados de un ejemplo clasificado, por ejemplo con respecto a una clase C:
 
@@ -203,7 +247,8 @@ Para ello, es importante tener en cuenta los cuatro posibles estados de un ejemp
 \end{enumerate}
 
 \vspace{6mm}
-Teniendo en cuenta los cuatro posibles estados anteriores, podemos definir las siguientes medidas que serán usadas para evaluar el rendimiento de nuestros modelos:
+{\setlength{\parindent}{0cm}
+Teniendo en cuenta los cuatro posibles estados anteriores, podemos definir las siguientes medidas que serán usadas para evaluar el rendimiento de nuestros modelos:}
 
 \begin{enumerate}
 
@@ -236,7 +281,8 @@ Se ayudará a penalizar los valores muy bajos en una u otra medida. Es frecuente
 \vspace{4mm}
 \end{enumerate}
 
-Para el caso en el que se cuenten con \textbf{más de 2 clases} (solo lo tendremos en cuenta al utilizar modelos preentrenados, ya que predeciremos tanto polaridad negativa, neutra y positiva. En nuestro conjunto de entrenamiento solo tenemos polaridad positiva y negativa), se debe \textbf{calcular} cada una de las \textbf{métricas anteriores} para \textbf{cada clase} y combinarlas  entre ellas para obtener una \textbf{medida global}. 
+{\setlength{\parindent}{0cm}
+Para el caso en el que se cuenten con \textbf{más de 2 clases} (solo lo tendremos en cuenta al utilizar modelos preentrenados, ya que predeciremos tanto polaridad negativa, neutra y positiva. En nuestro conjunto de entrenamiento solo tenemos polaridad positiva y negativa), se debe \textbf{calcular} cada una de las \textbf{métricas anteriores} para \textbf{cada clase} y combinarlas  entre ellas para obtener una \textbf{medida global}. }
 \vspace{2mm}\\
 La función \texttt{classification\_report} de \textit{sklearn} nos proporciona: 
 
@@ -255,7 +301,8 @@ La función \texttt{classification\_report} de \textit{sklearn} nos proporciona:
 
 
 \vspace{4mm}
-Comentar que los algoritmos anteriormente nombrados serán entrenados mediante \textbf{validación cruzada} o \textit{cross-validation}, de forma que se reducirá la dependencia entre la partición de los datos usada para la fase de entrenamiento y test. 
+{\setlength{\parindent}{0cm}
+Comentar que los algoritmos anteriormente nombrados serán entrenados mediante \textbf{validación cruzada} o \textit{cross-validation}, de forma que se reducirá la dependencia entre la partición de los datos usada para la fase de entrenamiento y test. }
 \vspace{2mm}\\
 Se dividirá el conjunto de documentos o \textit{corpus} en 5 particiones de iugal tamaño, de forma que que 4 serán para entrenar el modelo y el sobrante para la evaluación. Esto se repetirá 5 veces de forma que al final se promediará el valor de las métricas para tener una medida más robusta. 
 
@@ -263,18 +310,89 @@ Se dividirá el conjunto de documentos o \textit{corpus} en 5 particiones de iug
 
 \chapter{Estudio experimental}
 
-
 \section{Empleo de métodos de análisis de sentimientos preentrenados (SAMs)}
+
+
 
 \subsection{VaderSentiment}
 
+{\setlength{\parindent}{0cm}
+VADER \textit{(Valence Aware Dictionary and sEntiment Reasoner)} es una herramiento de análisis de sentimientos basada en reglas y léxico que está específicamente en sintonía con los sentimientos expresados en las redes sociales. Es completamente de código abierto y se instala como una librería más para python a través de $pip$.}
+\vspace{2mm}\\
+La puntuación $compound$ se calcula sumando las puntuaciones de valencia de cada palabra en el léxico, se ajusta de acuerdo con las reglas y luego se normaliza para estar entre -1 (extremo más negativo) y +1 (extremo más positivo).
+\vspace{2mm}\\
+Esta es la métrica más útil si desea una única medida unidimensional de sentimiento para una oración determinada. El significado de dicha puntuación es el siguiente:
+
+\begin{itemize}
+\item sentimiento positivo : $compound >= 0,05 $
+\item sentimiento neutral : $compound > -0,05$ y $compound < 0,05$
+\item sentimiento negativo : $compound <= -0,05$  
+\end{itemize}
+
+{\setlength{\parindent}{0cm}
+Los \textbf{resultados obtenidos} para el conjunto de $test$ han sido los siguientes: }
+
+\begin{table}[htbp!]
+\centering
+\scalebox{1.0}{\begin{tabular}{|c|c|c|c|}
+\hline
+\rowcolor{lightgray}
+& Precision & Recall & F1-score \\ \hline \hline 
+
+Negativo &  0.84  &   0.64  &   0.73 \\\hline
+Neutro   &  0.67  &   0.70  &   0.68 \\\hline
+Positivo &  0.68  &   0.81  &   0.74 \\\hline \hline
+
+Macro avg     & 0.73   &  0.72  &  0.72  \\\hline
+Weighted avg  & 0.73   &  0.72  &  0.72  \\\hline \hline
+
+\rowcolor{lightgray}
+Accuracy & \multicolumn{3}{|r|}{0.72}  \\\hline
+
+\end{tabular}}
+\caption{Resultados para VaderSentiment}
+\end{table}
+
+
+
+
 \subsection{TextBlob}
 
+{\setlength{\parindent}{0cm}
+TextBlob es una biblioteca de Python (2 y 3) para procesar datos textuales. Proporciona una API simple para sumergirse en tareas comunes de procesamiento del lenguaje natural (NLP), como etiquetado de parte del discurso, extracción de frases nominales, análisis de sentimientos, clasificación, traducción y más.}
+\vspace{2mm}\\
+{\setlength{\parindent}{0cm}
+Los \textbf{resultados obtenidos} para el conjunto de $test$ han sido los siguientes: }
 
+\vspace{2mm}
+\begin{table}[htbp!]
+\centering
+\scalebox{1.0}{\begin{tabular}{|c|c|c|c|}
+\hline
+\rowcolor{lightgray}
+& Precision & Recall & F1-score \\ \hline \hline 
+
+Negativo &  0.81  &   0.48  &   0.60 \\\hline
+Neutro   &  0.59  &   0.70  &   0.64 \\\hline
+Positivo &  0.63  &   0.79  &   0.70 \\\hline \hline
+
+Macro avg     & 0.68   &  0.66  &  0.65  \\\hline
+Weighted avg  & 0.68   &  0.65  &  0.65  \\\hline \hline
+
+\rowcolor{lightgray}
+Accuracy & \multicolumn{3}{|r|}{0.65}  \\\hline
+
+\end{tabular}}
+\caption{Resultados para TextBlob}
+\end{table}
+
+
+\clearpage
 
 \section{Creación de un propio método de análisis de sentimientos}
 
-La construcción de un clasificador de documentos de texto basado en un sistema de aprendizaje automático consta de varias etapas. En primer lugar es necesario preparar los datos del \textit{corpus} antes de pasárselos a los algoritmos. Se deben limpiar y normalizar de forma que se reduzca o eliminen datos innecesarios para el aprendizaje o que puedan influir de manera negativa en éste.
+{\setlength{\parindent}{0cm}
+La construcción de un clasificador de documentos de texto basado en un sistema de aprendizaje automático consta de varias etapas. En primer lugar es necesario preparar los datos del \textit{corpus} antes de pasárselos a los algoritmos. Se deben limpiar y normalizar de forma que se reduzca o eliminen datos innecesarios para el aprendizaje o que puedan influir de manera negativa en éste.}
 \vspace{2mm}\\
 A continuación cada uno de los tweets se someterá a un proceso de \textbf{tokenización}, el cual dividiremos el texto en unidades de significado conocidas como \textit{tokens} (suelen ser palabras).\vspace{2mm}\\
 A partir de ellos se extraerán las características que representen a los mensajes y se aplicarán métodos para reducir su número, como podría ser la aunación de términos morfológicamente similares para reducir su número. Finalmente se ponderarán las características en función de la importancia que se les quiera dar y con ellas se entrenarán los clasificadores. 
@@ -290,14 +408,126 @@ A partir de ellos se extraerán las características que representen a los mensa
 
 \subsection{Preprocesamiento}
 
+{\setlength{\parindent}{0cm}
+Partimos de una colección de tweets en los que tenemos todo tipo de información: urls, menciones, hashtags, repeticiones de caracteres, mezcla de letras mayúsculas y minúsculas etc. El objetivo de esta fase es tratar de limpiar y normalizar los datos que puedan influir de manera negativa a la hora de clasificar. }
+\vspace{2mm}\\
+A continuación comentamos una serie de tratamientos que hemos aplicado a cada uno de los tweets de forma que se limpien esos datos pero sin provocar una pérdida excesiva de la polaridad de los mismos:
+
+\begin{enumerate}
+
+\item \textbf{Decodificando HTML}: Parece que la codificación HTML no se ha convertido a texto y en algunos casos se encuentran terminaciones como '\&amp' y '\&quot'. Por lo que haremos uso de la librería \textbf{BeautifulSoup} para extraer preprocesar esos tweets que contengan información de este tipo.
+
+\item \textbf{Eliminando @mention}: La segunda parte del preprocesamiento será eliminar las menciones que unos usuarios hacen a otros. Esta información no aportará nada de valor a la hora de construir un modelo de análisis de sentimiento. Utilizaremos una expresión regular. 
+
+\item \textbf{Eliminando URL links}: Sucede de forma similar que con las menciones, es información relevante en el tweet pero para fines de análisis de sentimientos, podemos ignorarlos. Utilizaremos una expresión regular.
+
+\item \textbf{Hashtags y números}: A veces, el texto utilizado con un hashtag puede proporcionar información útil sobre el tweet. Puede ser un poco arriesgado deshacerse de todo el texto junto con el hashtag. Simplemente eliminaremos el '\#'. Haré esto en el proceso de limpieza de todos los caracteres que no son letras, incluidos los números. 
+
+\item \textbf{Normalización a minúsculas}: Una misma palabra escrita de forma completa en mayúsculas y en minúsculas es tratada de forma distinta por un algoritmo de aprendizaje automático. Para evitar que esto suceda, convertiremos todos los mensajes a su equivalente en letras minúsculas, de la misma forma que haría un \textit{LowerCaseFilter}.
+
+\end{enumerate}
+
+De forma que la función para la limpieza del tweet nos queda de la forma: 
+
+\vspace{2mm}
+\begin{lstlisting}[language=Python]
+from bs4 import BeautifulSoup
+import re
+
+pat1 = r'@[A-Za-z0-9]+'
+pat2 = r'https?://[A-Za-z0-9./]+'
+combined_pat = r'|'.join((pat1, pat2))
+
+def tweet_cleaner(text):
+    
+    # HTML Decoding
+    soup = BeautifulSoup(text, 'lxml')
+    
+    # @Menciones, URL links
+    souped = soup.get_text()
+    stripped = re.sub(combined_pat, '', souped)
+    try:
+        clean = stripped.decode("utf-8-sig").replace(u"\ufffd", "?")
+    except:
+        clean = stripped
+    
+    # Hashtag, numeros
+    letters_only = re.sub("[^a-zA-Z]", " ", clean)
+    
+    # LoweCaseFilter
+    lower_case = letters_only.lower()
+    
+    words = tok.tokenize(lower_case)
+    
+    return (" ".join(words)).strip()
+
+\end{lstlisting}
+
+
 \subsection{Tokenización}
 
+{\setlength{\parindent}{0cm}
+Una vez completado el proceso de normalización de los mensajes, la siguiente etapa es la de tokenización. Consiste en dividir el texto en unidades más pequeñas llamadas tokens las cuales tienen un significado propio y que normalmente suelen ser cada una de las palabras del mensaje. Por lo tanto \textbf{separaremos } los \textbf{términos} del tweet por \textbf{espacios en blanco}. }
+
+\vspace{4mm}
 \subsection{Extracción de las características}
 
+{\setlength{\parindent}{0cm}
+A partir de los tokens obtenidos en el paso anterior, se define una manera de representar los mensajes, creando así las características de cada tweet. Lo habitual en clasificación de documentos es hacer uso del modelo de bolsa de palabras ya mencionario anteriormente (también conocido como del inglés como \textit{bag of words}) donde cada mensaje se representa mediante sus tokens \textbf{sin tener en cuenta} el \textbf{orden} en los que éstos aparecen. En nuestro caso \textbf{cada característica} será un \textit{unigrama} o token individual. }
 
+\vspace{4mm}
 \subsection{Reducción de las características}
 
-\begin{comment}
+{\setlength{\parindent}{0cm}
+Esta fase suele ser opcional y el objetivo es reducir la dimensionalidad o el número de características del $corpus$ mediante la la \textbf{eliminación} de algunos de ellos, \textbf{aunación} de tokens morfológicamente similares, la \textbf{conversión} de tokens parecidos a otro token más general.}
+\vspace{2mm}\\
+Existen técnicas para llevar a cabo cada una de esas tareas comentadas:
+
+\begin{enumerate}
+
+\item \textbf{Eliminación de palabras vacías}: En todos los idiomas hay un conjunto de palabras pequeño que suele tener una frecuencia muy alta y que por norma general sirven para construir las oraciones pero que carecen de información. Estas palabras son las preposiciones, conjunciones, artículos, etc. 
+\vspace{2mm}\\
+Se define una lista con dichas palabras, conocidas como \textit{stopwords} y serán eliminadas de cada uno de los tweets, de forma que se reducirá el número de características del mismo. 
+
+\item \textbf{Stemming}: Es un método de normalización lingüística que transforma cada palabra a su raíz por medio de la supresión de prefijos, sufijos e infijos. Por ejemplo las palabras: perro, perrito, perritas se reduciría a una misma raiz perr.
+
+
+\item \textbf{Lematización}: Es otro método de normalización lingüística en el que cada palabra se transforma en su lema mediante el uso de un diccionario y un proceso de análisis morfológico. 
+\vspace{2mm}\\
+Por ejemplo podría considerarse el cambio de género o número a una misma forma. Se trata de reducir la variabilidad de una palabra. Es más costoso que el stemming, pero como resultado tenemos un reducción más fina de los términos. 
+
+\end{enumerate}
+
+De forma que la función para la reducción del tweet nos queda de la forma: 
+
+\vspace{2mm}
+\begin{lstlisting}[language=Python]
+# English Stopwords
+import nltk
+nltk.download('stopwords')
+stop_words = set(stopwords.words('english'))
+
+def preprocesar_texto_tweet(tweet):
+    
+    # Ya los teniamos convertidos a minuscula
+    
+    # Eliminamos las palabras vacias (Filtramos aquellas que no lo son) 
+    tweet_tokens = word_tokenize(tweet)
+    filtered_words = [word for word in tweet_tokens if word not in stop_words]
+    
+    # Stemming
+    ps = PorterStemmer()
+    stemmed_words = [ps.stem(w) for w in filtered_words]
+    
+    # Lematizacion
+    lemmatizer = WordNetLemmatizer()
+    lemma_words = [lemmatizer.lemmatize(w, pos='a') for w in stemmed_words]
+    
+    return " ".join(lemma_words)
+\end{lstlisting}
+\vspace{2mm}
+A continuación mostramos el top de los 50 términos más frecuentes utilizados en tweets con polaridad negativa sin considerar la reducción de características y tras considerarla:
+
 
 \begin{figure}[htbp!]
 \begin{center}
@@ -307,6 +537,16 @@ A partir de ellos se extraerán las características que representen a los mensa
 \caption{Top 50 términos negativos antes y después de preprocesar}
 \end{figure}
 
+{\setlength{\parindent}{0cm}
+Podemos observar que antes aparecían palabras como: \textit{to, the, my, it, and} que son \textbf{palabras } carentes de significado o \textbf{vacías} (stopwords) y no reflejan el sentimiento negativo. }
+\vspace{2mm}\\
+\textbf{Tras preprocesar} podemos ver como entre las palabras más frecuentes aparecen: \textit{get, work, miss, feel, sad, wish, bad} las cuales son mucho más \textbf{representativas} para expresar la \textbf{polaridad negativa}.
+
+\clearpage
+
+{\setlength{\parindent}{0cm}
+De la misma forma ocurre con los 50 términos más frecuentes utilizados en tweets que con polaridad positiva. De la misma forma que antes, las gráficas resultantes son:}
+
 \begin{figure}[htbp!]
 \begin{center}
 \includegraphics[scale=0.3]{images/pos.png}
@@ -315,15 +555,58 @@ A partir de ellos se extraerán las características que representen a los mensa
 \caption{Top 50 términos positivos antes y después de preprocesar}
 \end{figure}
 
-\end{comment}
+{\setlength{\parindent}{0cm}
+Podemos observar que vuelven a aparecer de hecho las mismas palabras como: \textit{the, to, you, it, and} que son \textbf{palabras} \textbf{vacías} y además de no reflejar el sentimiento positivo, coinciden con las negativas y por lo tanto pueden causar confusión para el clasificador. }
+\vspace{2mm}\\
+\textbf{Tras preprocesar} podemos ver como entre las palabras más frecuentes aparecen: \textit{good, love, thank, like, lol, great} las cuales son mucho más \textbf{representativas} para expresar la \textbf{polaridad positiva}.
+
 
 \subsection{Ponderación de las características}
 
+{\setlength{\parindent}{0cm}
+Las características extraídas pueden ser consideradas con la misma importancia o podemos asignarle distintos pesos en función de algún tipo de criterio, como por ejemplo la frecuencia de aparición de éstas en el propio tweet o en relación con la totalidad e los tweets.\vspace{2mm}\\
+Existen distintos métodos de ponderación, los cuales se han visto con más profundidad en la asignatura de Recuperación de Información, pero aquí voy a mostrar directamente el más famoso y utilizado en el ámbito de \textit{Text mining} e \textit{Information retrieval}, que es el esquema de \textbf{ponderación TF-IDF}. Definimos a continuación los dos conceptos que componen a dicho esquema de ponderación: }
+\vspace{2mm}\\
+\textbf{Term Frequency} o TF:
+
+\[ tf_{ij} = \frac{n_{ij}}{\sum_{k} n_{kj}}  \]
+
+{\setlength{\parindent}{0cm}
+La frecuencia del término $i$ en el documento $j$ se define como el número de veces que aparece una palabra en un documento dividido por el número total de palabras del documento. }
+
+\vspace{4mm}
+\textbf{Inverse Document Frequency} o IDF:
+
+\[ idf_i = log \left( \frac{N}{df_t} \right) \]
+
+{\setlength{\parindent}{0cm}
+La frecuencia documental inversa de un término $i$ se define como el logaritmo del número de documentos del $corpus$ dividido entre el número de documentos en los que aparece el término $i$.} \vspace{2mm}\\
+Favorece por tanto a las palabras que aparecen en pocos documentos y penaliza a aquellas que suelen aparecer en la mayoría (son las que no nos ayudan a discriminar los documentos). 
+\vspace{4mm}\\
+Finalmente, el \textbf{esquema TF-IDF}, que será la ponderación de un término $i$ en un documento $j$, se define como el producto de ambos conceptos:
+
+\[ w_{ij} = tf_{ij} \times log \left( \frac{N}{df_t} \right) \] 
+
+\vspace{2mm}
+{\setlength{\parindent}{0cm}
+No será necesario calcular éstos datos de forma manual, podemos hacer uso de la clase
+\texttt{TfidfVectorizer} proporcionada por $sklearn$. }
+\vspace{4mm}
+
 \section{Comparación y análisis de los modelos empleados}
+
+{\setlength{\parindent}{0cm}
+Al haber 1.6 millones de tweets, los tiempos de ejecución pueden dispararse, por lo
+que emplearemos, como se nos ha recomendado, un subconjunto representativo y
+balanceado del conjunto de Train.}
+
 
 
 \section{Modelos más avanzados}
 
+\subsection{Word2vec}
+\subsection{BERT}
+\subsection{Modelos de Deep Learning (LSTM)}
 
 
 
