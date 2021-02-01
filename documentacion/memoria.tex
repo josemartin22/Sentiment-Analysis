@@ -186,24 +186,12 @@ Dichos algoritmos basan su funcionamiento en relaciones matemáticas creadas ent
 {\setlength{\parindent}{0cm}
 El enfoque no supervisado es elegante pero necesita apoyarse de alguna forma en datos que aporten una cierta orientación y sirvan de base de conocimiento. Por ello nos \textbf{centraremos} en métodos de \textbf{aprendizaje supervisado}.}
 
+
 \vspace{6mm}
-\section{Naive Bayes}
+\section{Random Forest}
 
-{\setlength{\parindent}{0cm}
-La familia de algoritmos Naive Bayes se basan en el conocido \textit{Teorema de Bayes}:} \\
 
-{\setlength{\parindent}{0cm}
-\textit{Sea \{$A_1$, $A_2$, ... , $A_n$\} un conjunto de sucesos mútuamente excluyentes y exhaustivos, y tales que la probabilidad de cada uno de ellos es distinta de cero. Sea B un suceso cualquiera del que se conocen las probabilidades condicionales $P(B|A_i)$.}
-\vspace{2mm}\\
-Entonces la probabilidad de $P(A_i |B)$ viene dada por la expresión:}
-\vspace{4mm}
-\[ P(A_i | B) = \frac{P(B|A_i) * P(A_i)}{P(B)}  \]
-
-\vspace{4mm}
-{\setlength{\parindent}{0cm}
-Para el caso de clasificación de textos, los sucesos son mútuamente excluyentes ya que no podemos considerar (en nuestro caso un tweet) que es de polaridad positiva y negativa al mismo tiempo y además son exhaustivos ya que esa calificación (positivo, negativo y neutro) son los únicos tipos que existen.}
-\vspace{2mm}\\
-Además consideraremos que las palabras de un mismo mensaje no tienen ningún tipo de relación entre sí y por lo tanto es indiferente la posición que tienen dentro del texto al que pertenecen. (Esta condición es conocida en este ámbito como la suposición de bolsa de palabras o \textit{bag of words}). 
+\clearpage
 
 \vspace{6mm}
 \section{Máquinas de vectores de soporte}
@@ -225,6 +213,26 @@ Y otro de ellos es $gamma$ que determina la distancia máxima a partir de la cua
 \includegraphics[scale=0.65]{images/SVM.png}
 \caption{Representación de SVM para el problema}
 \end{figure}
+
+
+
+\section{Naive Bayes}
+
+{\setlength{\parindent}{0cm}
+La familia de algoritmos Naive Bayes se basan en el conocido \textit{Teorema de Bayes}:} \\
+
+{\setlength{\parindent}{0cm}
+\textit{Sea \{$A_1$, $A_2$, ... , $A_n$\} un conjunto de sucesos mútuamente excluyentes y exhaustivos, y tales que la probabilidad de cada uno de ellos es distinta de cero. Sea B un suceso cualquiera del que se conocen las probabilidades condicionales $P(B|A_i)$.}
+\vspace{2mm}\\
+Entonces la probabilidad de $P(A_i |B)$ viene dada por la expresión:}
+\vspace{4mm}
+\[ P(A_i | B) = \frac{P(B|A_i) * P(A_i)}{P(B)}  \]
+
+\vspace{4mm}
+{\setlength{\parindent}{0cm}
+Para el caso de clasificación de textos, los sucesos son mútuamente excluyentes ya que no podemos considerar (en nuestro caso un tweet) que es de polaridad positiva y negativa al mismo tiempo y además son exhaustivos ya que esa calificación (positivo, negativo y neutro) son los únicos tipos que existen.}
+\vspace{2mm}\\
+Además consideraremos que las palabras de un mismo mensaje no tienen ningún tipo de relación entre sí y por lo tanto es indiferente la posición que tienen dentro del texto al que pertenecen. (Esta condición es conocida en este ámbito como la suposición de bolsa de palabras o \textit{bag of words}). 
 \vspace{4mm}
 
 
@@ -252,7 +260,7 @@ Teniendo en cuenta los cuatro posibles estados anteriores, podemos definir las s
 
 \begin{enumerate}
 
-\item \textbf{Exactitud o \texttt{Accuracy}}: Es la medida de rendimiento más simple e intuitiva. Representa la relación entre las predicciones correctas sobre el total de las predicciones realizadas. 
+\item \textbf{Exactitud o \textit{Accuracy}}: Es la medida de rendimiento más simple e intuitiva. Representa la relación entre las predicciones correctas sobre el total de las predicciones realizadas. 
 
 \[  Accuracy = \frac{TP + TN}{TP + FP + TN + FN} \]
 
@@ -337,13 +345,15 @@ Los \textbf{resultados obtenidos} para el conjunto de $test$ han sido los siguie
 \scalebox{1.0}{\begin{tabular}{|c|c|c|c|}
 \hline
 \rowcolor{lightgray}
-& Precision & Recall & F1-score \\ \hline \hline 
+Polaridad & Precision & Recall & F1-score \\ \hline \hline 
 
 Negativo &  0.84  &   0.64  &   0.73 \\\hline
 Neutro   &  0.67  &   0.70  &   0.68 \\\hline
 Positivo &  0.68  &   0.81  &   0.74 \\\hline \hline
 
+\rowcolor{lightgray}
 Macro avg     & 0.73   &  0.72  &  0.72  \\\hline
+\rowcolor{lightgray}
 Weighted avg  & 0.73   &  0.72  &  0.72  \\\hline \hline
 
 \rowcolor{lightgray}
@@ -370,13 +380,15 @@ Los \textbf{resultados obtenidos} para el conjunto de $test$ han sido los siguie
 \scalebox{1.0}{\begin{tabular}{|c|c|c|c|}
 \hline
 \rowcolor{lightgray}
-& Precision & Recall & F1-score \\ \hline \hline 
+Polaridad & Precision & Recall & F1-score \\ \hline \hline 
 
 Negativo &  0.81  &   0.48  &   0.60 \\\hline
 Neutro   &  0.59  &   0.70  &   0.64 \\\hline
-Positivo &  0.63  &   0.79  &   0.70 \\\hline \hline
+Positivo &  0.63  &   0.79  &   0.70 \\\hline \hline 
 
+\rowcolor{lightgray}
 Macro avg     & 0.68   &  0.66  &  0.65  \\\hline
+\rowcolor{lightgray}
 Weighted avg  & 0.68   &  0.65  &  0.65  \\\hline \hline
 
 \rowcolor{lightgray}
@@ -558,32 +570,47 @@ De la misma forma ocurre con los 50 términos más frecuentes utilizados en twee
 {\setlength{\parindent}{0cm}
 Podemos observar que vuelven a aparecer de hecho las mismas palabras como: \textit{the, to, you, it, and} que son \textbf{palabras} \textbf{vacías} y además de no reflejar el sentimiento positivo, coinciden con las negativas y por lo tanto pueden causar confusión para el clasificador. }
 \vspace{2mm}\\
-\textbf{Tras preprocesar} podemos ver como entre las palabras más frecuentes aparecen: \textit{good, love, thank, like, lol, great} las cuales son mucho más \textbf{representativas} para expresar la \textbf{polaridad positiva}.
-
+Tras preprocesar podemos ver como entre las palabras más frecuentes aparecen: \textit{good, love, thank, like, lol, great} las cuales son mucho más \textbf{representativas} para expresar la \textbf{polaridad positiva}.
+\vspace{4mm}\\
+La \textbf{reducción de la dimensionalidad} es bastante notable. Como ya comentaremos más adelante, utilizaremos un total de 6000 instancias para el entrenar los clasificadores. \\
+Tras obtener el esquema tf-idf para cada uno de los documentos, obtenemos una matriz de:  6000 rows × 12554 columns.
+\vspace{2mm}\\
+Una vez preprocesado todos los datos, obtenemos una matriz de: 6000 rows × 7649 columns, 
+lo que supone una reducción de dimensionalidad de un \textbf{39\%} y por lo tanto los \textbf{tiempos de ejecución} y los \textbf{resultados} como veremos más adelante, \textbf{mejorarán} significativamente. 
+\vspace{4mm}
 
 \subsection{Ponderación de las características}
 
 {\setlength{\parindent}{0cm}
 Las características extraídas pueden ser consideradas con la misma importancia o podemos asignarle distintos pesos en función de algún tipo de criterio, como por ejemplo la frecuencia de aparición de éstas en el propio tweet o en relación con la totalidad e los tweets.\vspace{2mm}\\
-Existen distintos métodos de ponderación, los cuales se han visto con más profundidad en la asignatura de Recuperación de Información, pero aquí voy a mostrar directamente el más famoso y utilizado en el ámbito de \textit{Text mining} e \textit{Information retrieval}, que es el esquema de \textbf{ponderación TF-IDF}. Definimos a continuación los dos conceptos que componen a dicho esquema de ponderación: }
+Existen distintos métodos de ponderación, los cuales se han visto con más profundidad en la asignatura de Recuperación de Información, pero aquí voy a mostrar directamente el más famoso y utilizado en el ámbito de \textit{Text mining} e \textit{Information retrieval}, que es el esquema de \textbf{ponderación TF-IDF}. 
 \vspace{2mm}\\
-\textbf{Term Frequency} o TF:
+Definimos a continuación los dos conceptos que componen a dicho esquema de ponderación: }
+\vspace{2mm}
+
+\begin{itemize}
+
+\item \textbf{Term Frequency} o TF:
 
 \[ tf_{ij} = \frac{n_{ij}}{\sum_{k} n_{kj}}  \]
 
 {\setlength{\parindent}{0cm}
 La frecuencia del término $i$ en el documento $j$ se define como el número de veces que aparece una palabra en un documento dividido por el número total de palabras del documento. }
 
-\vspace{4mm}
-\textbf{Inverse Document Frequency} o IDF:
+
+\item \textbf{Inverse Document Frequency} o IDF:
 
 \[ idf_i = log \left( \frac{N}{df_t} \right) \]
 
 {\setlength{\parindent}{0cm}
 La frecuencia documental inversa de un término $i$ se define como el logaritmo del número de documentos del $corpus$ dividido entre el número de documentos en los que aparece el término $i$.} \vspace{2mm}\\
 Favorece por tanto a las palabras que aparecen en pocos documentos y penaliza a aquellas que suelen aparecer en la mayoría (son las que no nos ayudan a discriminar los documentos). 
-\vspace{4mm}\\
-Finalmente, el \textbf{esquema TF-IDF}, que será la ponderación de un término $i$ en un documento $j$, se define como el producto de ambos conceptos:
+
+\end{itemize}
+\vspace{2mm}
+
+{\setlength{\parindent}{0cm}
+Finalmente, el \textbf{esquema TF-IDF}, que será la ponderación de un término $i$ en un documento $j$, se define como el producto de ambos conceptos:}
 
 \[ w_{ij} = tf_{ij} \times log \left( \frac{N}{df_t} \right) \] 
 
@@ -599,7 +626,102 @@ No será necesario calcular éstos datos de forma manual, podemos hacer uso de l
 Al haber 1.6 millones de tweets, los tiempos de ejecución pueden dispararse, por lo
 que emplearemos, como se nos ha recomendado, un subconjunto representativo y
 balanceado del conjunto de Train.}
+\vspace{2mm}\\
+En concreto, vamos a utilizar una pequeña submuestra de 6000 instancias (3000 para cada una de las polaridades, positiva y negativa). He intendado hacerlo con 4000 para cada una de ellas, pero la memoria RAM se llena muy rápido y el ordenador se quedaba colgado hasta tener que apagarlo forzósamente. 
+\vspace{2mm}\\
+A continuación, mostramos las tablas con los resultados de las métricas de evaluación obtenidas para cada uno de los modelos considerados (utilizando y sin utilizar el preprocesamiento anteriormente comentado).
+\clearpage
 
+\subsection{Tablas con los resultados}
+
+\vspace{12mm}
+
+\begin{table}[htbp!]
+\centering
+\scalebox{1.0}{\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\rowcolor{lightgray}
+& \multicolumn{3}{|c|}{Sin preprocesamiento} & \multicolumn{3}{|c|}{Con preprocesamiento} \\\hline
+
+\rowcolor{lightgray}
+Polaridad & Precision & Recall & F1-score & Precision & Recall & F1-score \\ \hline \hline 
+
+Negativo &  0.68  &   0.67  &   0.67 &  0.80 & 0.63 & 0.70 \\\hline
+Positivo &  0.68  &   0.70  &   0.69 &  0.70 & 0.85 & 0.77 \\\hline \hline
+
+\rowcolor{lightgray}
+Macro avg     & 0.68   &  0.68  &  0.68  & 0.75   &  0.74  &  0.73 \\\hline
+\rowcolor{lightgray}
+Weighted avg  & 0.68   &  0.68  &  0.68  & 0.75   &  0.74  &  0.73 \\\hline \hline
+\rowcolor{lightgray}
+Accuracy & \multicolumn{3}{|r|}{0.68}  & \multicolumn{3}{|r|}{0.74} \\\hline
+
+\end{tabular}}
+\caption{Resultados para Random Forest}
+\end{table}
+
+
+\vspace{10mm}
+
+
+\begin{table}[htbp!]
+\centering
+\scalebox{1.0}{\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\rowcolor{lightgray}
+& \multicolumn{3}{|c|}{Sin preprocesamiento} & \multicolumn{3}{|c|}{Con preprocesamiento} \\\hline
+
+\rowcolor{lightgray}
+Polaridad & Precision & Recall & F1-score & Precision & Recall & F1-score \\ \hline \hline 
+
+Negativo &  0.73  &   0.68  &   0.70 &  0.80 & 0.63 & 0.70 \\\hline
+Positivo &  0.71  &   0.75  &   0.73 &  0.70 & 0.85 & 0.77 \\\hline \hline
+
+\rowcolor{lightgray}
+Macro avg     & 0.72   &  0.72  &  0.72  & 0.75   &  0.75  &  0.75 \\\hline
+\rowcolor{lightgray}
+Weighted avg  & 0.72   &  0.72  &  0.72  & 0.75   &  0.75  &  0.75 \\\hline \hline
+\rowcolor{lightgray}
+Accuracy & \multicolumn{3}{|r|}{0.72}  & \multicolumn{3}{|r|}{0.75} \\\hline
+
+\end{tabular}}
+\caption{Resultados para SVM}
+\end{table}
+
+\vspace{10mm}
+
+
+\begin{table}[htbp!]
+\begin{center}
+\scalebox{1.0}{\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\rowcolor{lightgray}
+& \multicolumn{3}{|c|}{Sin preprocesamiento} & \multicolumn{3}{|c|}{Con preprocesamiento} \\\hline
+
+\rowcolor{lightgray}
+Polaridad & Precision & Recall & F1-score & Precision & Recall & F1-score \\ \hline \hline 
+
+Negativo &  0.73  &   0.74  &   0.73 &  0.77 & 0.70 & 0.73 \\\hline
+Positivo &  0.74  &   0.73  &   0.74 &  0.73 & 0.80 & 0.76 \\\hline \hline
+
+\rowcolor{lightgray}
+Macro avg     & 0.74   &  0.74  &  0.74  & 0.74   &  0.74  &  0.74 \\\hline
+\rowcolor{lightgray}
+Weighted avg  & 0.74   &  0.74  &  0.74  & 0.74   &  0.74  &  0.74 \\\hline \hline
+\rowcolor{lightgray}
+Accuracy & \multicolumn{3}{|r|}{0.74}  & \multicolumn{3}{|r|}{0.74} \\\hline
+
+\end{tabular}}
+\caption{Resultados para Naive Bayes}
+\end{center}
+\end{table}
+
+\clearpage
+
+\begin{comment}
+Este es el único caso en el que apenas se notan los cambios al preprocesar, pero sí podemos ver
+que tenemos una mejor tasa de acierto a la hora de predecir los casos positivos tras el preprocesado ya que el \textit{recall} es superior, aunque de media tenemos el mismo valor 0.74
+\end{comment}
 
 
 \section{Modelos más avanzados}
