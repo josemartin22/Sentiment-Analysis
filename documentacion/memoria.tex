@@ -123,6 +123,8 @@
 
 \chapter{Descripción y análisis del problema}
 
+\section{¿Qué es el análisis de sentimientos?}
+
 El \textbf{análisis de sentimientos} consiste en el uso de técnicas de Procesamiento del Lenguaje Natural, analítica de textos y lingüística computacional para identificar y extraer información subjetiva u opinión expresada en texto. 
 \vspace{2mm}\\
 Se utiliza en sistemas de recomendación, filtrado de mensajes/spam, en aplicaciones de negocios para predecir tendencias en función de las reseñas de los clientes o incluso seguir las opiniones sobre política, elaborar normas en función de la opinión de la gente (inteligencia de gobierno), etc...
@@ -146,8 +148,25 @@ Se trabajará sobre el
 conjunto de datos en el dominio de Tweets del conjunto de datos \texttt{Sentiment140}, formado por
 1.6 millones de tweets en el conjunto de Train y 498 tweets en el conjunto de test etiquetados
 como polaridad positiva (clase ‘4’) y polaridad negativa (clase ‘0’). 
+\vspace{8mm}
 
 
+\section{Problemas que presenta el análisis de sentimientos}
+
+Algunos de los problemas que enunciaremos a continuación están directamente relacionados o podríamos decir que son problemas que se heredan del Procesamiento del Lenguaje Natural, entre ellos:
+
+\begin{itemize}
+\item El sentimiento de las palabras a menudo depende del \textbf{contexto en el que estén ubicadas}, por ejemplo no tendría el mismo significado el verbo "morir" cuando nos referimos al fallecimiento de una persona (sentimientos negativos), que cuando utilizamos "morir de la risa" para denotar una situación graciosa (sentimientos positivos).
+
+\item La \textbf{ambigüedad} es uno de los elementos lingüísticos más sutiles y complicados de resolver dentro del PLN. Las personas somos capaces de deducirlos dentro de un contexto y en base a nuestras experiencias, pero los ordenadores no cuentan con demasiados recursos para ello. Esto se complica cuando el nivel de granuralidad cada vez es más fino (análisis a nivel de aspecto y entidad).
+
+\item  La \textbf{ironía} de las expresiones utilizadas por las personas o cualquier otra \textbf{expresión coloquial} que no se suele utilizar por mucha gente en general. 
+
+\item Detección de las \textbf{frases negadas}, ya que palabras como "no" pueden invertir la polaridad del resto de palabras a las que acompañan (y no siempre la negación invierte el sentimiendo de éstas). Por ejemplo: "La comida está buena", si añadimos el "no" delante del verbo cambiaría totalmente la polaridad de ésta. 
+
+Sin embargo, en la oración "No cabe duda de que la comida está buenísima", sigue teniendo la polaridad positiva.
+
+\end{itemize}
 
 
 
@@ -190,8 +209,23 @@ El enfoque no supervisado es elegante pero necesita apoyarse de alguna forma en 
 \vspace{6mm}
 \section{Random Forest}
 
+{\setlength{\parindent}{0cm}
+Random Forest es una combinación de árboles de decisión o predictores
+tal que cada árbol depende de los valores de un vector aleatorio probado independientemente y con la misma
+distribución para cada uno de éstos. Supone por tanto una mejora sobre los árboles de decisión clásicos y la técnica de \textit{bagging}.}
 
-\clearpage
+\begin{figure}[htbp!]
+\centering
+\includegraphics[scale=0.4]{images/rf.png}
+\caption{Representación de Random Forest}
+\end{figure}
+
+{\setlength{\parindent}{0cm}
+Este modelo permite tener múltiples árboles de decisión que son entrenados con una muestra de datos escogida con reemplazo a partir de la muestra original mediante \textit{bootstrap}. }
+\vspace{2mm}
+\\Además, cada árbol escoge un subconjunto de predictores que va a utilizar para intentar predecir, con el objetivo de evitar las correlaciones entre los distintos árboles, que era el principal problema de \textit{bagging} (si existe un una variable predictora fuerte, esta era utilizado casi siempre en la primera decisión del árbol, haciendo por tanto que la mayoría de árboles se parecieran).
+\vspace{2mm}
+\\Además, es un modelo que ofrece unos resultados muy buenos en general a la hora de clasificar, ya que obtiene un bajo sesgo y varianza al tener múltiples árboles y promediar entre ellos (que además sabemos que no están correlacionados).
 
 \vspace{6mm}
 \section{Máquinas de vectores de soporte}
@@ -210,7 +244,7 @@ Y otro de ellos es $gamma$ que determina la distancia máxima a partir de la cua
 \vspace{6mm}
 \begin{figure}[htbp!]
 \centering
-\includegraphics[scale=0.65]{images/SVM.png}
+\includegraphics[scale=0.7]{images/SVM.png}
 \caption{Representación de SVM para el problema}
 \end{figure}
 
@@ -318,9 +352,22 @@ Se dividirá el conjunto de documentos o \textit{corpus} en 5 particiones de iug
 
 \chapter{Estudio experimental}
 
+Para abordar el problema, se nos han propuesto una serie de aproximaciones en orden creciente de complejidad:
+
+\begin{itemize}
+
+\item Comenzaremos utilizando modelos de análisis de sentimientos ya preentrenados.
+\item A continuación construiremos nuestro propio método de análisis de sentimientos (crearemos un clasificador haciendo uso de los algoritmos explicados anteriormente y aplicando un preprocesado a los datos para mejorar los resultados).
+\item Y por último (como ampliación de la práctica) utilizaremos modelos mucho más avanzados.
+\end{itemize}
+
+
 \section{Empleo de métodos de análisis de sentimientos preentrenados (SAMs)}
 
-
+{\setlength{\parindent}{0cm}
+Estos métodos ya han sido preentrenados con un conjunto de textos que representan de forma general el tipo de polaridad (positiva, negativa, neutra) que puede expresar una oración o documento. }
+\vspace{2mm}\\
+No será necesario entrenar con nuestros datos, sólamente tendremos que utilizar los datos de test para predecir directamente la polaridad que expresan nuestros tweets.
 
 \subsection{VaderSentiment}
 
@@ -329,7 +376,9 @@ VADER \textit{(Valence Aware Dictionary and sEntiment Reasoner)} es una herramie
 \vspace{2mm}\\
 La puntuación $compound$ se calcula sumando las puntuaciones de valencia de cada palabra en el léxico, se ajusta de acuerdo con las reglas y luego se normaliza para estar entre -1 (extremo más negativo) y +1 (extremo más positivo).
 \vspace{2mm}\\
-Esta es la métrica más útil si desea una única medida unidimensional de sentimiento para una oración determinada. El significado de dicha puntuación es el siguiente:
+Esta es la métrica más útil si desea una única medida unidimensional de sentimiento para una oración determinada.
+\clearpage
+El \textbf{significado} de dicha \textbf{puntuación} es el siguiente:
 
 \begin{itemize}
 \item sentimiento positivo : $compound >= 0,05 $
@@ -364,8 +413,6 @@ Accuracy & \multicolumn{3}{|r|}{0.72}  \\\hline
 \end{table}
 
 
-
-
 \subsection{TextBlob}
 
 {\setlength{\parindent}{0cm}
@@ -398,6 +445,9 @@ Accuracy & \multicolumn{3}{|r|}{0.65}  \\\hline
 \caption{Resultados para TextBlob}
 \end{table}
 
+A la vista de los resultados, pese a no haber visto una sola muestra de entrenamiento, los resultados son aceptables, sobretodo en el caso de VaderSentiment (la cual está entrenada con textos de redes sociales) y es más afín a nuestro problema.
+\vspace{2mm}\\
+Comentar que TextBlob también nos permitía a través de su API entrenar un modelo de Naive Bayes (ahora sí utilizando nuestros datos de entrenamiento) con el que hemos obtenido un precisión del 72\% aprox. Los resultados serán comentados más en profundidad en el análisis que haremos más adelante. 
 
 \clearpage
 
@@ -646,13 +696,13 @@ A continuación, mostramos las tablas con los resultados de las métricas de eva
 \rowcolor{lightgray}
 Polaridad & Precision & Recall & F1-score & Precision & Recall & F1-score \\ \hline \hline 
 
-Negativo &  0.68  &   0.67  &   0.67 &  0.80 & 0.63 & 0.70 \\\hline
-Positivo &  0.68  &   0.70  &   0.69 &  0.70 & 0.85 & 0.77 \\\hline \hline
+Negativo &  0.68  &   0.67  &   0.67 &  0.79 & 0.68 & 0.70 \\\hline
+Positivo &  0.68  &   0.70  &   0.69 &  0.69 & 0.80 & 0.77 \\\hline \hline
 
 \rowcolor{lightgray}
-Macro avg     & 0.68   &  0.68  &  0.68  & 0.75   &  0.74  &  0.73 \\\hline
+Macro avg     & 0.68   &  0.68  &  0.68  & 0.74   &  0.74  &  0.73 \\\hline
 \rowcolor{lightgray}
-Weighted avg  & 0.68   &  0.68  &  0.68  & 0.75   &  0.74  &  0.73 \\\hline \hline
+Weighted avg  & 0.68   &  0.68  &  0.68  & 0.74   &  0.74  &  0.73 \\\hline \hline
 \rowcolor{lightgray}
 Accuracy & \multicolumn{3}{|r|}{0.68}  & \multicolumn{3}{|r|}{0.74} \\\hline
 
@@ -705,9 +755,9 @@ Negativo &  0.73  &   0.74  &   0.73 &  0.77 & 0.70 & 0.73 \\\hline
 Positivo &  0.74  &   0.73  &   0.74 &  0.73 & 0.80 & 0.76 \\\hline \hline
 
 \rowcolor{lightgray}
-Macro avg     & 0.74   &  0.74  &  0.74  & 0.74   &  0.74  &  0.74 \\\hline
+Macro avg     & 0.74   &  0.74  &  0.74  & 0.74   &  0.75  &  0.74 \\\hline
 \rowcolor{lightgray}
-Weighted avg  & 0.74   &  0.74  &  0.74  & 0.74   &  0.74  &  0.74 \\\hline \hline
+Weighted avg  & 0.74   &  0.74  &  0.74  & 0.74   &  0.75  &  0.74 \\\hline \hline
 \rowcolor{lightgray}
 Accuracy & \multicolumn{3}{|r|}{0.74}  & \multicolumn{3}{|r|}{0.74} \\\hline
 
@@ -715,6 +765,42 @@ Accuracy & \multicolumn{3}{|r|}{0.74}  & \multicolumn{3}{|r|}{0.74} \\\hline
 \caption{Resultados para Naive Bayes}
 \end{center}
 \end{table}
+
+\clearpage
+
+A la vista de los resultados obtenidos, lo primero que nos llama la atención es que en \textbf{todos} los \textbf{algoritmos}, en la mayoría de métricas, los \textbf{resultados mejoran} cuando aplicamos el \textbf{preprocesamiento} a los documentos de partida. Las diferencias más grandes en cuanto a \textit{accuracy} nos referimos, se pueden observar sobretodo en Random Forest y también en SVM. 
+\vspace{2mm}\\
+Naive Bayes parece ser igual de robusto indiferentemente si aplicamos o no el preprocesados a los datos. Sin embargo, si nos fijamos el preprocesamiento ayuda sobretodo a \textbf{mejorar la clasificación} de los casos \textbf{positivos}. 
+\vspace{2mm}\\
+Esto ocurre en todos los casos, se obtiene un \textit{recall} a la hora de clasificar los tweets con \textbf{polaridad positiva} un 15\% superior tras preprocesar en Random Forest, un 10\% superior en SVM y un 7\% superior en Naive Bayes.
+\vspace{2mm}\\
+A diferencia del \textit{recall} para los tweets con \textbf{polaridad negativa} que baja un 5\% en todos los algoritmos aproximadamente. Esto puede ocurrir bien porque el subconjunto de entrenamiento de nuestro dataset es bastante pequeño y no es demasiado representativos para los casos negativos de aquellos términos que expresan la polaridad negativa.
+\vspace{4mm}\\
+Si comparamos los resultados de \textit{accuracy} obtenidos en nuestros clasificadores propios contra los modelos preentrenados (VaderSentiment y TextBlob) que comentamos anteriormente, podemos observar que \textbf{nuestros modelos} ofrecen \textbf{mejor comportamiento} obtniendo unos resultados de media un 10\% superiores respecto a TextBlob y un 3\% superiores a VaderSentiment.
+\vspace{2mm}\\
+A continuación mostramos en una tabla todos los clasificadores/modelos empleados junto a su accuracy
+
+\begin{table}[htbp!]
+\begin{center}
+\scalebox{1.0}{\begin{tabular}{|c|c|}
+\hline
+\rowcolor{lightgray}
+Clasificador & \textit{Accuracy} \\\hline
+VaderSentiment & 0.72 \\\hline
+TextBlob & 0.65 \\\hline
+Random Forest & 0.74 \\\hline
+Support Vector Machine & 0.75 \\\hline
+Naive Bayes & 0.74 \\\hline
+\end{tabular}}
+\end{center}
+\end{table}
+
+Comentar que VaderSentiment, pese a no haber sido entrenado con nuestros datos de tweets, obtiene buenos resultados ya que este clasificador está en sintonía con los sentimientos expresados en las redes sociales, por lo tanto la forma de expresión de los usuarios de Tweeter le es familiar.
+\vspace{2mm}\\
+En cuanto a propios clasificadores, los mejores resultados los hemos obtenido con SVM (en concreto con el \textit{kernel} de base radial o \textit{rbf}) y tras hacer una \textbf{búsqueda} de los \textbf{mejores parámetros} con \texttt{GridSearchCV} 
+\vspace{2mm}\\
+Obtenemos aprox. un 76\% considerando el modelo SVC(C=200, class\_weight='balanced', gamma=0.001), siendo C el factor de regularización inversamente proporcional a éste y un valor gamma  (para el coeficiente del $kernel$) de 0.001, además de una ponderación balanceada en el pesos de las clases para la etapa de entrenamiento del clasificador.
+
 
 \clearpage
 
