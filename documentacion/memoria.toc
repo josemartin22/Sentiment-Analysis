@@ -25,4 +25,5 @@
 \contentsline {subsection}{\numberline {3.4.2}Modelos de Deep Learning}{22}{subsection.3.4.2}%
 \contentsline {chapter}{\numberline {4}Planteamiento de futuro}{23}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Problemas que presenta el análisis de sentimientos}{23}{section.4.1}%
-\contentsline {section}{\numberline {4.2}¿Qué harías si puedes trabajar durante 6 meses en el problema?}{24}{section.4.2}%
+\contentsline {section}{\numberline {4.2}Futuro del análisis de sentimientos}{24}{section.4.2}%
+\contentsline {section}{\numberline {4.3}¿Qué harías si pudieses trabajar durante 6 meses en el problema?}{25}{section.4.3}%

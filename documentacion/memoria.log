@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.11.14)  2 FEB 2021 13:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.11.14)  2 FEB 2021 16:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -518,7 +518,7 @@ LaTeX Info: Redefining \nameref on input line 92.
 \@outlinefile=\write3
 \openout3 = `memoria.out'.
 
-<images/ugr.jpeg, id=112, 1204.5pt x 384.43625pt>
+<images/ugr.jpeg, id=116, 1204.5pt x 384.43625pt>
 File: images/ugr.jpeg Graphic file (type jpg)
 <use images/ugr.jpeg>
 Package pdftex.def Info: images/ugr.jpeg  used on input line 96.
@@ -562,15 +562,15 @@ Cap\'{\i }tulo 1.
 
 
 ]
-<images/train.png, id=160, 409.53pt x 262.9825pt>
+<images/train.png, id=165, 409.53pt x 262.9825pt>
 File: images/train.png Graphic file (type png)
 <use images/train.png>
-Package pdftex.def Info: images/train.png  used on input line 157.
+Package pdftex.def Info: images/train.png  used on input line 159.
 (pdftex.def)             Requested size: 225.24219pt x 144.64081pt.
-<images/test.png, id=162, 390.45876pt x 262.9825pt>
+<images/test.png, id=167, 390.45876pt x 262.9825pt>
 File: images/test.png Graphic file (type png)
 <use images/test.png>
-Package pdftex.def Info: images/test.png  used on input line 168.
+Package pdftex.def Info: images/test.png  used on input line 170.
 (pdftex.def)             Requested size: 234.27705pt x 157.7907pt.
 
 
@@ -579,49 +579,49 @@ Make it at least 14.49998pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-LaTeX Info: Redefining \. on input line 179.
-LaTeX Info: Redefining \% on input line 179.
+LaTeX Info: Redefining \. on input line 181.
+LaTeX Info: Redefining \% on input line 181.
 [3 <./images/train.png> <./images/test.png>]
 Cap\'{\i }tulo 2.
 [4
 
 ]
-<images/rf.png, id=181, 743.77875pt x 503.8825pt>
+<images/rf.png, id=186, 743.77875pt x 503.8825pt>
 File: images/rf.png Graphic file (type png)
 <use images/rf.png>
-Package pdftex.def Info: images/rf.png  used on input line 223.
+Package pdftex.def Info: images/rf.png  used on input line 225.
 (pdftex.def)             Requested size: 297.50623pt x 201.54942pt.
-LaTeX Info: Redefining \. on input line 233.
-LaTeX Info: Redefining \% on input line 233.
+LaTeX Info: Redefining \. on input line 235.
+LaTeX Info: Redefining \% on input line 235.
  [5 <./images/rf.png (PNG copy)>]
-<images/SVM.png, id=188, 427.8384pt x 290.5254pt>
+<images/SVM.png, id=193, 427.8384pt x 290.5254pt>
 File: images/SVM.png Graphic file (type png)
 <use images/SVM.png>
-Package pdftex.def Info: images/SVM.png  used on input line 251.
+Package pdftex.def Info: images/SVM.png  used on input line 253.
 (pdftex.def)             Requested size: 299.48483pt x 203.3664pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 260--261
+Underfull \hbox (badness 10000) in paragraph at lines 262--263
 
  []
 
-LaTeX Info: Redefining \. on input line 261.
-LaTeX Info: Redefining \% on input line 261.
+LaTeX Info: Redefining \. on input line 263.
+LaTeX Info: Redefining \% on input line 263.
 [6 <./images/SVM.png>]
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 2
-63.
+65.
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 263.
-LaTeX Info: Redefining \. on input line 301.
-LaTeX Info: Redefining \% on input line 301.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 265.
+LaTeX Info: Redefining \. on input line 303.
+LaTeX Info: Redefining \% on input line 303.
 [7]
-LaTeX Info: Redefining \. on input line 326.
-LaTeX Info: Redefining \% on input line 326.
+LaTeX Info: Redefining \. on input line 328.
+LaTeX Info: Redefining \% on input line 328.
  [8]
-LaTeX Info: Redefining \. on input line 361.
-LaTeX Info: Redefining \% on input line 361.
+LaTeX Info: Redefining \. on input line 363.
+LaTeX Info: Redefining \% on input line 363.
  [9
 
 ]
@@ -629,159 +629,170 @@ Cap\'{\i }tulo 3.
 [10
 
 ]
-LaTeX Info: Redefining \. on input line 460.
-LaTeX Info: Redefining \% on input line 460.
+LaTeX Info: Redefining \. on input line 462.
+LaTeX Info: Redefining \% on input line 462.
  [11
 
 ]
-<images/Fases_SA.png, id=233, 717.6411pt x 273.9033pt>
+<images/Fases_SA.png, id=238, 717.6411pt x 273.9033pt>
 File: images/Fases_SA.png Graphic file (type png)
 <use images/Fases_SA.png>
-Package pdftex.def Info: images/Fases_SA.png  used on input line 473.
+Package pdftex.def Info: images/Fases_SA.png  used on input line 475.
 (pdftex.def)             Requested size: 466.46118pt x 178.03502pt.
-LaTeX Info: Redefining \. on input line 490.
-LaTeX Info: Redefining \% on input line 490.
+LaTeX Info: Redefining \. on input line 492.
+LaTeX Info: Redefining \% on input line 492.
  [12
 
  <./images/Fases_SA.png>]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
-LaTeX Info: Redefining \. on input line 541.
-LaTeX Info: Redefining \% on input line 541.
+LaTeX Info: Redefining \. on input line 543.
+LaTeX Info: Redefining \% on input line 543.
  [13]
-LaTeX Info: Redefining \. on input line 578.
-LaTeX Info: Redefining \% on input line 578.
+LaTeX Info: Redefining \. on input line 580.
+LaTeX Info: Redefining \% on input line 580.
  [14]
-<images/neg.png, id=292, 745.78625pt x 625.33624pt>
+<images/neg.png, id=297, 745.78625pt x 625.33624pt>
 File: images/neg.png Graphic file (type png)
 <use images/neg.png>
-Package pdftex.def Info: images/neg.png  used on input line 604.
+Package pdftex.def Info: images/neg.png  used on input line 606.
 (pdftex.def)             Requested size: 223.7376pt x 187.60231pt.
-<images/neg_clean.png, id=293, 738.76pt x 644.4075pt>
+<images/neg_clean.png, id=298, 738.76pt x 644.4075pt>
 File: images/neg_clean.png Graphic file (type png)
 <use images/neg_clean.png>
-Package pdftex.def Info: images/neg_clean.png  used on input line 605.
+Package pdftex.def Info: images/neg_clean.png  used on input line 607.
 (pdftex.def)             Requested size: 221.6297pt x 193.32373pt.
-LaTeX Info: Redefining \. on input line 615.
-LaTeX Info: Redefining \% on input line 615.
+LaTeX Info: Redefining \. on input line 617.
+LaTeX Info: Redefining \% on input line 617.
 
 [15 <./images/neg.png> <./images/neg_clean.png>]
-<images/pos.png, id=324, 745.78625pt x 630.355pt>
+<images/pos.png, id=329, 745.78625pt x 630.355pt>
 File: images/pos.png Graphic file (type png)
 <use images/pos.png>
-Package pdftex.def Info: images/pos.png  used on input line 622.
+Package pdftex.def Info: images/pos.png  used on input line 624.
 (pdftex.def)             Requested size: 223.7376pt x 189.10796pt.
-<images/pos_clean.png, id=325, 738.76pt x 644.4075pt>
+<images/pos_clean.png, id=330, 738.76pt x 644.4075pt>
 File: images/pos_clean.png Graphic file (type png)
 <use images/pos_clean.png>
-Package pdftex.def Info: images/pos_clean.png  used on input line 623.
+Package pdftex.def Info: images/pos_clean.png  used on input line 625.
 (pdftex.def)             Requested size: 221.6297pt x 193.32373pt.
-LaTeX Info: Redefining \. on input line 648.
-LaTeX Info: Redefining \% on input line 648.
+LaTeX Info: Redefining \. on input line 650.
+LaTeX Info: Redefining \% on input line 650.
  [16
 
  <./images/pos.png> <./images/pos_clean.png>]
-LaTeX Info: Redefining \. on input line 691.
-LaTeX Info: Redefining \% on input line 691.
+LaTeX Info: Redefining \. on input line 693.
+LaTeX Info: Redefining \% on input line 693.
  [17]
-LaTeX Info: Redefining \. on input line 777.
-LaTeX Info: Redefining \% on input line 777.
+LaTeX Info: Redefining \. on input line 779.
+LaTeX Info: Redefining \% on input line 779.
  [18
 
 ]
-LaTeX Info: Redefining \. on input line 814.
-LaTeX Info: Redefining \% on input line 814.
+LaTeX Info: Redefining \. on input line 816.
+LaTeX Info: Redefining \% on input line 816.
  [19
 
 ]
-<images/w.png, id=354, 664.4825pt x 465.74pt>
+<images/w.png, id=359, 664.4825pt x 465.74pt>
 File: images/w.png Graphic file (type png)
 <use images/w.png>
-Package pdftex.def Info: images/w.png  used on input line 842.
+Package pdftex.def Info: images/w.png  used on input line 844.
 (pdftex.def)             Requested size: 265.78828pt x 186.2927pt.
-LaTeX Info: Redefining \. on input line 849.
-LaTeX Info: Redefining \% on input line 849.
+LaTeX Info: Redefining \. on input line 851.
+LaTeX Info: Redefining \% on input line 851.
  [20
 
  <./images/w.png (PNG copy)>]
-<images/cbow.png, id=360, 702.625pt x 416.55624pt>
+<images/cbow.png, id=365, 702.625pt x 416.55624pt>
 File: images/cbow.png Graphic file (type png)
 <use images/cbow.png>
-Package pdftex.def Info: images/cbow.png  used on input line 860.
+Package pdftex.def Info: images/cbow.png  used on input line 862.
 (pdftex.def)             Requested size: 281.04501pt x 166.61954pt.
-<images/skip.png, id=361, 702.625pt x 371.3875pt>
+<images/skip.png, id=366, 702.625pt x 371.3875pt>
 File: images/skip.png Graphic file (type png)
 <use images/skip.png>
-Package pdftex.def Info: images/skip.png  used on input line 871.
+Package pdftex.def Info: images/skip.png  used on input line 873.
 (pdftex.def)             Requested size: 281.04501pt x 148.55235pt.
-LaTeX Info: Redefining \. on input line 877.
-LaTeX Info: Redefining \% on input line 877.
+LaTeX Info: Redefining \. on input line 879.
+LaTeX Info: Redefining \% on input line 879.
  [21 <./images/cbow.png (PNG copy)> <./images/skip.png (PNG copy)>]
-<images/av1.png, id=370, 387.4475pt x 279.0425pt>
+<images/av1.png, id=375, 387.4475pt x 279.0425pt>
 File: images/av1.png Graphic file (type png)
 <use images/av1.png>
-Package pdftex.def Info: images/av1.png  used on input line 907.
+Package pdftex.def Info: images/av1.png  used on input line 909.
 (pdftex.def)             Requested size: 232.47029pt x 167.42679pt.
-LaTeX Info: Redefining \. on input line 917.
-LaTeX Info: Redefining \% on input line 917.
+LaTeX Info: Redefining \. on input line 919.
+LaTeX Info: Redefining \% on input line 919.
  [22 <./images/av1.png>]
 Cap\'{\i }tulo 4.
 [23
 
 ]
-LaTeX Info: Redefining \. on input line 978.
-LaTeX Info: Redefining \% on input line 978.
+LaTeX Info: Redefining \. on input line 972.
+LaTeX Info: Redefining \% on input line 972.
  [24]
-Underfull \hbox (badness 10000) in paragraph at lines 990--1010
+LaTeX Info: Redefining \. on input line 1007.
+LaTeX Info: Redefining \% on input line 1007.
+ [25
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 1025--1048
 [][]$\OT1/cmtt/m/n/12 https : / / github . com / tthustla / twitter _ sentiment
  _ analysis _ part1 / blob / master /
  []
 
 
-Overfull \hbox (69.50739pt too wide) in paragraph at lines 990--1010
+Overfull \hbox (69.50739pt too wide) in paragraph at lines 1025--1048
 [][]$\OT1/cmtt/m/n/12 https : / / medium . com / @himanshu _ 23732 / sentiment-
 []analysis-[]with-[]sentiment140-[]e6b0c789e0ce$[][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 990--1010
+Underfull \hbox (badness 10000) in paragraph at lines 1025--1048
 [][]$\OT1/cmtt/m/n/12 http : / / openaccess . uoc . edu / webapps / o2 / bitstr
 eam / 10609 / 81435 / 6 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 990--1010
+Underfull \hbox (badness 10000) in paragraph at lines 1025--1048
 
  []
 
 
-Overfull \hbox (119.90741pt too wide) in paragraph at lines 990--1010
+Overfull \hbox (119.90741pt too wide) in paragraph at lines 1025--1048
 [][]$\OT1/cmtt/m/n/12 https : / / medium . com / swlh / sentiment-[]classificat
 ion-[]using-[]word-[]embeddings-[]word2vec-[]aedf28fbb8ca$[][]
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1014.
-[25
+
+Underfull \hbox (badness 10000) in paragraph at lines 1025--1048
+
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1051.
+[26
+
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1014.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1051.
  (./memoria.aux
 LaTeX Info: Redefining \. on input line 24.
 LaTeX Info: Redefining \% on input line 24.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1014.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1014.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1051.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1051.
 
 Package rerunfilecheck Info: File `memoria.out' has not changed.
-(rerunfilecheck)             Checksum: C5B19E878346E5CE8C0077A3BFF62B92;2193.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1014.
+(rerunfilecheck)             Checksum: 558C4B47FFE5C47126D16A60E4471550;2280.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1051.
  ) 
 Here is how much of TeX's memory you used:
- 11014 strings out of 481239
- 155007 string characters out of 5920376
+ 11017 strings out of 481239
+ 155038 string characters out of 5920376
  690906 words of memory out of 5000000
- 25893 multiletter control sequences out of 15000+600000
+ 25894 multiletter control sequences out of 15000+600000
  542293 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  35i,13n,45p,587b,2057s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -800,10 +811,10 @@ are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf/fonts/ty
 pe1/public/cm-super/sfrm1200.pfb>
-Output written on memoria.pdf (26 pages, 742733 bytes).
+Output written on memoria.pdf (27 pages, 748427 bytes).
 PDF statistics:
- 489 PDF objects out of 1000 (max. 8388607)
- 418 compressed objects within 5 object streams
- 151 named destinations out of 1000 (max. 500000)
- 287 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 499 PDF objects out of 1000 (max. 8388607)
+ 427 compressed objects within 5 object streams
+ 153 named destinations out of 1000 (max. 500000)
+ 295 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -130,25 +130,27 @@ El \textbf{análisis de sentimientos} consiste en el uso de técnicas de Procesa
 \vspace{2mm}\\
 Se utiliza en sistemas de recomendación, filtrado de mensajes/spam, en aplicaciones de negocios para predecir tendencias en función de las reseñas de los clientes o incluso seguir las opiniones sobre política, elaborar normas en función de la opinión de la gente (inteligencia de gobierno), etc...
 \vspace{4mm}\\
-El análisis de sentimientos se puede llevar a cabo a 3 niveles distintos en función de la granularidad, profundidad o detalle que se desee conseguir. Estos niveles son:
+El análisis de sentimientos se puede llevar a cabo a \textbf{3 niveles distintos} en función de la granularidad, profundidad o detalle que se desee conseguir. Estos niveles son:
 
 \begin{itemize}
 \item \textbf{Análisis a nivel de documento:} en este nivel se analiza el sentimiento global del documento, clasificándolo como positivo, negativo o neutro (o usando cualquier otro sistema de calificación). En este nivel se asume que se expresa una valoración sobre un único ente, por lo que no sería aplicable para aquellos casos que hablen sobre varias entidades simultáneamente.  
 
 \item \textbf{Análisis a nivel de oración:} en este nivel se divide el documento en oraciones individuales para extraer posteriormente la opinión que contiene cada una de ellas. La opinión de cada oración puede ser positivia, negativa o neutra (o tomar otro sistema de calificación al igual que el caso anterior). 
 
-\item \textbf{Análisis a nivel de aspecto y entidad:} es el nivel más fino y con mayor detalle posible, una entidad está formada por distintos elementos o aspectos y sobre los que se expresa una opinión cuya polaridad puede ser distinta en cada caso. Este nivel es el que presenta un mayor desafío en la actualidad para los investigadores de dicho ámbito (sentiment analysis). 
+\item \textbf{Análisis a nivel de aspecto y entidad:} es el nivel más fino y con mayor detalle posible, una entidad está formada por distintos elementos o aspectos y sobre los que se expresa una opinión cuya polaridad puede ser distinta en cada caso. 
+\vspace{2mm}\\
+Este nivel es el que presenta un mayor desafío en la actualidad para los investigadores de dicho ámbito \textit{(sentiment analysis)}. 
 
 \end{itemize}
 \vspace{2mm}
 
 {\setlength{\parindent}{0cm}
-En nuestro caso nos \textbf{centraremos} en el primer nivel,  la \textbf{clasificación} de la \textbf{polaridad} de una frase de opinión (en concreto de tweets), esto es, decidir si en una frase el autor muestra un sentimiento positivo, negativo o neutro.}
+En nuestro caso nos \textbf{centraremos} en el \textbf{primer nivel},  la \textbf{clasificación} de la \textbf{polaridad} de una oración/documento de opinión (en concreto de tweets), esto es, decidir si en una oración el/la autor/a muestra un sentimiento positivo, negativo o neutro.}
 
 \section{Dataset para el desarrollo de la práctica}
 
 {\setlength{\parindent}{0cm}
-Se trabajará sobre el conjunto de datos en el dominio de Tweets del conjunto de datos \texttt{Sentiment140} que podemos descargalo de forma gratuita bien desde el enlace de Stanford o desde Google Drive, desde: \url{http://help.sentiment140.com/for-students/}. }
+Se trabajará sobre el conjunto de datos en el dominio de Tweets del conjunto de datos \texttt{Sentiment140} que podemos descargar de forma gratuita bien desde el enlace de Stanford o desde Google Drive, a través de: \url{http://help.sentiment140.com/for-students/}. }
 \vspace{2mm}\\
 Está formado por 1.600.000 tweets en el \textbf{conjunto de Training} etiquetados como polaridad positiva (clase ‘4’) y polaridad negativa (clase ‘0’). 
 
@@ -181,9 +183,9 @@ Para el \textbf{resto de modelos} utilizados (en los que utilizaremos los datos 
 \section{Métodos para la clasificación de documentos}
 
 {\setlength{\parindent}{0cm}
-La clasificación de un documento en función a la polaridad del sentimiento que expresa, puede llevarse a cabo de diversas formas. No hay un consenso (como en la mayoría de campos de la inteligencia artificial) sobre qué técnicas o algoritmos se deben usar para obtener mejores resultados en la clasificación de textos en unas situaciones u otras. }
+La \textbf{clasificación} de un documento en función a la polaridad del sentimiento que expresa, puede \textbf{llevarse a cabo de diversas formas}. No hay un consenso (como en la mayoría de campos de la inteligencia artificial) sobre qué técnicas o algoritmos se deben usar para obtener mejores resultados en la clasificación de textos en unas situaciones u otras. }
 \vspace{2mm}\\
-Aun así, podemos diferenciar los dos grandes grupos en los se encuentran dichas técnicas:
+Aun así, podemos diferenciar los \textbf{dos grandes grupos} en los se encuentran dichas técnicas:
 
 \begin{enumerate}
 
@@ -279,7 +281,7 @@ Además consideraremos que las palabras de un mismo mensaje no tienen ningún ti
 {\setlength{\parindent}{0cm}
 Para determinar el rendimiento de los resultados obtenidos por los distintos algoritmos, es necesario establecer unas métricas o medidas de evaluación que permitan evaluar de manera objetiva su eficacia a la hora de clasificar los ejemplos que se le proporiconen a éstos.}
 \vspace{4mm}\\
-Para ello, es importante tener en cuenta los cuatro posibles estados de un ejemplo clasificado, por ejemplo con respecto a una clase C:
+Para ello, es importante tener en cuenta los \textbf{cuatro posibles estados} de un \textbf{ejemplo clasificado}, por ejemplo con respecto a una clase C:
 
 \begin{enumerate}
 \item \textbf{Verdaderos positivos} (True Positives o TP): son aquellos que han sido marcados de manera correcta como pertenecientes a la clase C.
@@ -366,14 +368,14 @@ Para abordar el problema, se nos han propuesto una serie de aproximaciones en or
 
 \item Comenzaremos utilizando modelos de análisis de sentimientos ya preentrenados.
 \item A continuación construiremos nuestro propio método de análisis de sentimientos (crearemos un clasificador haciendo uso de los algoritmos explicados anteriormente y aplicando un preprocesado a los datos para mejorar los resultados).
-\item Y por último (como ampliación de la práctica) utilizaremos modelos mucho más avanzados.
+\item Y por último (como ampliación de la práctica) estudiaremos la posibilidad de utilizar modelos mucho más avanzados.
 \end{itemize}
 
 
 \section{Empleo de métodos de análisis de sentimientos preentrenados (SAMs)}
 
 {\setlength{\parindent}{0cm}
-Estos métodos ya han sido preentrenados con un conjunto de textos que representan de forma general el tipo de polaridad (positiva, negativa, neutra) que puede expresar una oración o documento. }
+Estos métodos ya han sido preentrenados con un conjunto de textos que representan de forma general el tipo de polaridad \textit{(positiva, negativa, neutra)} que puede expresar una oración o documento. }
 \vspace{2mm}\\
 No será necesario entrenar con nuestros datos, sólamente tendremos que utilizar los datos de test para predecir directamente la polaridad que expresan nuestros tweets.
 
@@ -453,7 +455,7 @@ Accuracy & \multicolumn{3}{|r|}{0.65}  \\\hline
 \caption{Resultados para TextBlob}
 \end{table}
 
-A la vista de los resultados, pese a no haber visto una sola muestra de entrenamiento, los resultados son aceptables, sobretodo en el caso de VaderSentiment (la cual está entrenada con textos de redes sociales) y es más afín a nuestro problema.
+A la vista de los resultados, pese a no haber visto una sola muestra de entrenamiento, los resultados son aceptables, sobretodo en el caso de \textbf{VaderSentiment} (la cual está entrenada con textos de redes sociales) y \textbf{es más afín} a nuestro problema.
 \vspace{2mm}\\
 Comentar que TextBlob también nos permitía a través de su API entrenar un modelo de Naive Bayes (ahora sí utilizando nuestros datos de entrenamiento) con el que hemos obtenido un precisión del 72\% aprox. Los resultados serán comentados más en profundidad en el análisis que haremos más adelante. 
 
@@ -634,7 +636,7 @@ La \textbf{reducción de la dimensionalidad} es bastante notable. Como ya coment
 Tras obtener el esquema tf-idf para cada uno de los documentos, obtenemos una matriz de:  6000 rows × 12554 columns.
 \vspace{2mm}\\
 Una vez preprocesado todos los datos, obtenemos una matriz de: 6000 rows × 7649 columns, 
-lo que supone una reducción de dimensionalidad de un \textbf{39\%} y por lo tanto los \textbf{tiempos de ejecución} y los \textbf{resultados} como veremos más adelante, \textbf{mejorarán} significativamente. 
+lo que supone una \textbf{reducción} de dimensionalidad de un \textbf{39\%} y por lo tanto los \textbf{tiempos de ejecución} y los \textbf{resultados} como veremos más adelante, \textbf{mejorarán} significativamente. 
 \vspace{4mm}
 
 \subsection{Ponderación de las características}
@@ -662,7 +664,7 @@ La frecuencia del término $i$ en el documento $j$ se define como el número de 
 
 {\setlength{\parindent}{0cm}
 La frecuencia documental inversa de un término $i$ se define como el logaritmo del número de documentos del $corpus$ dividido entre el número de documentos en los que aparece el término $i$.} \vspace{2mm}\\
-Favorece por tanto a las palabras que aparecen en pocos documentos y penaliza a aquellas que suelen aparecer en la mayoría (son las que no nos ayudan a discriminar los documentos). 
+Favorece por tanto a las palabras que aparecen en pocos documentos y penaliza a aquellas que suelen aparecer en la mayoría (son las que no nos ayudan a discriminar de forma clara entre distintas polaridades). 
 
 \end{itemize}
 \vspace{2mm}
@@ -849,7 +851,7 @@ Para entrenar este modelo, se toman en consideración las palabras que rodean es
 
 \begin{itemize}
 
-\item \textbf{Bolsa Contínua de Palabras o CBOW}: del inglés Continuous Bag of Words, se trata de un modelo que predice la palabra en consideración con las palabras dadas como contexto dentro de una ventana específica. La capa oculta tiene un número de dimensiones igual a las necesarias para representar la palabra actual en la capa de salida. 
+\item \textbf{Bolsa Contínua de Palabras o CBOW}: del inglés: \textit{Continuous Bag of Words}, se trata de un modelo que predice la palabra en consideración con las palabras dadas como contexto dentro de una ventana específica. La capa oculta tiene un número de dimensiones igual a las necesarias para representar la palabra actual en la capa de salida. 
 \vspace{2mm}\\
 En el siguiente ejemplo se muestra una ventana de tamaño 2 para predecir el vector de la palabra 'awesome' dada la oración: 'Restaurant was awesome this time’
 
@@ -917,7 +919,7 @@ Las redes LSTM al poder \textbf{retroalimentarse} pueden reaprender más rápida
 \chapter{Planteamiento de futuro}
 
 Los enormes $datasets$ sobre opiniones y reseñas que se irán generando en las redes sociales (ya sea twitter, facebook o instagram) o en cualquier negocio online (como podría ser amazon) a lo largo de los años necesitarán de un
-modelo de análisis de sentimiento \textbf{escalable} que sea lo suficientemente flexible
+modelo de análisis de sentimiento \textbf{escalable} que sea lo suficientemente \textbf{flexible}
 para ser aplicado a revisiones pertenecientes a diferentes ámbitos o dominios.
 
 \section{Problemas que presenta el análisis de sentimientos}
@@ -941,17 +943,42 @@ Sin embargo, en la oración ``No cabe duda de que la comida está buenísima''`,
 \end{itemize}
 
 {\setlength{\parindent}{0cm}
-En concreto, lo más relevante parece ser el contexto en el que se ubica el sentimiento y la interpretación que una persona pueda asociarle a dicha expresión, bien por la ambigüedad o por el dominio en el que se utilice.}
+En concreto, lo más relevante a resolver parece ser la determinación del contexto en el que se ubica el sentimiento, la interpretación que una persona pueda asociarle a dicha expresión, bien por la ambigüedad, el sarcasmo o por el dominio en el que se utilice.}
 \vspace{2mm}\\
 {\setlength{\parindent}{0cm}
-Un estudio de Ogneva, M \cite{OGNEVA} sugiere que un \textit{accuracy} del 70\% exacto puede considerarse equivalente a como un humano percibe los sentimientos de otras personas, ya que esta percepción varía de una persona a otra. Incluso si el programa es produjese un $accuracy$ del 100\% correcto, los humanos
+Un estudio de Ogneva, M \cite{OGNEVA} sugiere que un \textit{accuracy} del 70\% exacto puede \textbf{considerarse equivalente} a como un \textbf{humano percibe los sentimientos} de otras personas, ya que esta percepción varía de una persona a otra. Incluso si el programa es produjese un $accuracy$ del 100\% correcto, los humanos
 todavía no estarían de acuerdo con él en alrededor del 20\% de las predicciones.}
 
+\section{Futuro del análisis de sentimientos} 
 
-\section{¿Qué harías si puedes trabajar durante 6 meses en el problema?}
+La extracción y clasificación a gran escala del sentimiento de los millones de textos que cada día se escriben en Internet será sin duda una de las áreas de mayor actividad tecnológica en el futuro más cercano. 
+\vspace{4mm}\\
+Permitirá a las empresas conocer qué productos son los que los consumidores quieren, cuáles son los que les desagradan y, sobre todo, qué es lo que necesitan en cada momento.
+\vspace{2mm}\\
+Organizaciones no relacionadas con la oferta de productos y servicios también \textbf{ven} en el \textbf{análisis de sentimientos} una gran oportunidad para obtener \textbf{ventajas frente a sus competidores}. El análisis de sentimientos permitirá mantener a la población sometida a un sondeo de opinión permanente y en donde los cambios en dichas opiniones se percibirán y obtendrán en tiempo real.
+\vspace{2mm}\\
+En un futuro, \textbf{no solo las palabras escritas} serán usadas para evaluar los sentimientos. 
+\\La información no textual que acompaña a los mensajes y publicaciones posee un gran valor que puede ayudar en el análisis de la polaridad: \textbf{Vídeos, imágenes, URLs, animaciones} y demás contenidos multimedia, que son muy habituales en redes sociales, ayudarán a \textbf{facilitar} enormemente la tarea de \textbf{clasificación de los sentimientos}.
+\vspace{2mm}\\
+En el caso de las redes sociales como Twitter, es una práctica cada vez más habitual que varias personas publiquen mensajes de manera sincronizada y organizada con determinadas ideas para influir en el sentimiento del resto de usuarios. \textbf{Tener un control} sobre este tipo de comportamientos es fundamental para que el \textbf{análisis de sentimientos} pueda ser considerado una \textbf{herramienta de verdadero valor}. 
+\vspace{2mm}\\
+El \textbf{nivel de detalle}, que comentábamos al inicio de la práctica, cambiará (a un nivel más fino) en un futuro próximo.
+\vspace{4mm}\\
+Los futuros sistemas de análisis podrán saber \textbf{cómo se sienten las personas} y darán el salto desde los sentimientos hasta las \textbf{emociones} \textit{(miedo, alegría, tristeza, sorpresa, ira o confianza)} serán algunos de los estados de ánimo que los clasificadores sabrán distinguir a partir de nuestras palabras. Estos sistemas analizarán nuestra voz y nuestras imágenes mediante dispositivos móviles, ordenadores y otros equipos domésticos que ya conviven entre nosotros y forman parte de nuestra vida cotidiana. 
+\vspace{2mm}\\
+Toda esta información permitirá construir \textbf{sistemas} totalmente \textbf{personalizados}, adaptados a nuestros gustos, criterios y a nuestra forma de pensar. 
+
+
+\clearpage
+
+
+\section{¿Qué harías si pudieses trabajar durante 6 meses en el problema?}
+
+{\setlength{\parindent}{0cm}
+A continuación, presentamos un par de ideas como posibles líneas de investigación que se podrían seguir para profundizar más en la resolución de nuestro problema: }
+\vspace{4mm}
 
 \begin{itemize}
-
 
 \item Una idea: Captar la variada percepción de los humanos combinando gramáticas positivas y negativas sobre un
 revisión subjetiva \cite{Bhuvan}, en nuestro caso podemos utilizar conjuntos de tweets que tengan una serie de hashtags asociados y estén relacionados con un tema específico. 
@@ -971,7 +998,15 @@ Los pesos \textbf{mostrarían cuán positivos o negativos} son dichos términos.
 
 \end{itemize}
 
-Aunque siempre habrá un sesgo asociado al $corpus$ o a la fuente de datos, no es posible que todos los documentos pertenecientes a ésta expresen de forma detallada el sentimiento. 
+\vspace{15mm}
+{\setlength{\parindent}{0cm}
+Nota: Las ideas anteriormente presentadas son ideales que sería interesante investigar y experimentar pero que seguramente conlleven más tiempo si tenemos en cuenta ese trabajo sería individual \textit{(sería deseable trabajar en un equipo)}.
+\vspace{2mm}\\
+Es necesario leer y aprender de toda la literatura existente, además de profundizar en la representación del conocimiento, en concreto de las ontologías \textit{(que según vi en la asignatura de Ingeniería del Conocimiento, no era algo sencillo de definir)} y conseguir superar todas las circunstancias que seguramente apareciesen durante ese tiempo. }
+
+\clearpage
+
+
 
 
 % BIBLIOGRAFIA
@@ -996,8 +1031,6 @@ Their Business''. Retrieved 2012-12-13.
 \\\url{https://medium.com/@himanshu_23732/sentiment-analysis-with-sentiment140-e6b0c789e0ce}
 \vspace{2mm}
 \\\url{http://openaccess.uoc.edu/webapps/o2/bitstream/10609/81435/6/jsobrinosTFM0618memoria.pdf}
-\vspace{2mm}
-\\\url{}
 \vspace{2mm}\\
 \\\textbf{Modelos Avanzados}
 \vspace{2mm}
@@ -1006,9 +1039,13 @@ Their Business''. Retrieved 2012-12-13.
 \\\url{https://medium.com/swlh/sentiment-classification-using-word-embeddings-word2vec-aedf28fbb8ca}
 \vspace{2mm}
 \\\url{https://en.wikipedia.org/wiki/Long_short-term_memory}
+\vspace{2mm}\\
+\\\textbf{Otros enlaces consultados}
 \vspace{2mm}
+\\\url{http://terrificdata.com/2017/04/07/future-sentiment-analysis/}
+\vspace{2mm}
+\\\url{https://www.expert.ai/blog/future-natural-language-processing/}
 
-  
 \end{thebibliography}
 
 \end{document}
