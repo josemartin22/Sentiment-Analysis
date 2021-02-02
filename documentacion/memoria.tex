@@ -479,7 +479,7 @@ A partir de ellos se extraerán las características que representen a los mensa
 \subsection{Preprocesamiento}
 
 {\setlength{\parindent}{0cm}
-Partimos de una colección de tweets en los que tenemos todo tipo de información: urls, menciones, hashtags, repeticiones de caracteres, mezcla de letras mayúsculas y minúsculas etc. El objetivo de esta fase es tratar de limpiar y normalizar los datos que puedan influir de manera negativa a la hora de clasificar. }
+Partimos de una colección de tweets en los que tenemos todo tipo de información: urls, menciones, hashtags, repeticiones de caracteres, mezcla de letras mayúsculas y minúsculas etc. El objetivo de esta fase es tratar de limpiar y normalizar los datos que puedan influir de manera negativa a la hora de clasificar. \cite{Jain} }
 \vspace{2mm}\\
 A continuación comentamos una serie de tratamientos que hemos aplicado a cada uno de los tweets de forma que se limpien esos datos pero sin provocar una pérdida excesiva de la polaridad de los mismos:
 
@@ -806,9 +806,9 @@ Naive Bayes & 0.74 \\\hline
 
 Comentar que VaderSentiment, pese a no haber sido entrenado con nuestros datos de tweets, obtiene buenos resultados ya que este clasificador está en sintonía con los sentimientos expresados en las redes sociales, por lo tanto la forma de expresión de los usuarios de Tweeter le es familiar.
 \vspace{2mm}\\
-En cuanto a propios clasificadores, los mejores resultados los hemos obtenido con SVM (en concreto con el \textit{kernel} de base radial o \textit{rbf}) y tras hacer una \textbf{búsqueda} de los \textbf{mejores parámetros} con \texttt{GridSearchCV} 
+En cuanto a propios clasificadores, los mejores resultados los hemos obtenido con SVM (en concreto con el \textit{kernel} de base radial o \textit{rbf}) y tras hacer una \textbf{búsqueda} de los \textbf{mejores parámetros} con \texttt{GridSearchCV}. Obtenemos aprox. un 76\% considerando el modelo SVC(C=200, class\_weight='balanced', gamma=0.001).
 \vspace{2mm}\\
-Obtenemos aprox. un 76\% considerando el modelo SVC(C=200, class\_weight='balanced', gamma=0.001), siendo C el factor de regularización inversamente proporcional a éste y un valor gamma  (para el coeficiente del $kernel$) de 0.001, además de una ponderación balanceada en el pesos de las clases para la etapa de entrenamiento del clasificador.
+Una buena ídea es combinar un conjunto de clasificadores (\textit{ensemble}) con el fin de mejorar la precisión de las estimaciones que se pueden lograr utilizando un solo clasificador \cite{Rokach}. \\También mejorar el rendimiento del clasificador SVM mediante el desarrollo de métodos de conjunto con un sistema de clasificación de polaridad basado en léxico o diccionarios \cite{Kennedy}. 
 
 
 \clearpage
@@ -916,9 +916,14 @@ Las redes LSTM al poder \textbf{retroalimentarse} pueden reaprender más rápida
 
 \chapter{Planteamiento de futuro}
 
+Los enormes $datasets$ sobre opiniones y reseñas que se irán generando en las redes sociales (ya sea twitter, facebook o instagram) o en cualquier negocio online (como podría ser amazon) a lo largo de los años necesitarán de un
+modelo de análisis de sentimiento \textbf{escalable} que sea lo suficientemente flexible
+para ser aplicado a revisiones pertenecientes a diferentes ámbitos o dominios.
+
 \section{Problemas que presenta el análisis de sentimientos}
 
-Algunos de los problemas que enunciaremos a continuación están directamente relacionados o podríamos decir que son problemas que se heredan del Procesamiento del Lenguaje Natural, entre ellos:
+{\setlength{\parindent}{0cm}
+Algunos de los problemas que enunciaremos a continuación están directamente relacionados o podríamos decir que son problemas que se heredan del Procesamiento del Lenguaje Natural, entre ellos:}
 
 \begin{itemize}
 \item El sentimiento de las palabras a menudo depende del \textbf{contexto en el que estén ubicadas}, por ejemplo no tendría el mismo significado el verbo ``morir'' cuando nos referimos al fallecimiento de una persona (sentimientos negativos), que cuando utilizamos ``morir de la risa'' para denotar una situación graciosa (sentimientos positivos).
@@ -935,27 +940,55 @@ Sin embargo, en la oración ``No cabe duda de que la comida está buenísima''`,
 
 \end{itemize}
 
-\clearpage
+{\setlength{\parindent}{0cm}
+En concreto, lo más relevante parece ser el contexto en el que se ubica el sentimiento y la interpretación que una persona pueda asociarle a dicha expresión, bien por la ambigüedad o por el dominio en el que se utilice.}
+\vspace{2mm}\\
+{\setlength{\parindent}{0cm}
+Un estudio de Ogneva, M \cite{OGNEVA} sugiere que un \textit{accuracy} del 70\% exacto puede considerarse equivalente a como un humano percibe los sentimientos de otras personas, ya que esta percepción varía de una persona a otra. Incluso si el programa es produjese un $accuracy$ del 100\% correcto, los humanos
+todavía no estarían de acuerdo con él en alrededor del 20\% de las predicciones.}
+
 
 \section{¿Qué harías si puedes trabajar durante 6 meses en el problema?}
 
+\begin{itemize}
 
 
+\item Una idea: Captar la variada percepción de los humanos combinando gramáticas positivas y negativas sobre un
+revisión subjetiva \cite{Bhuvan}, en nuestro caso podemos utilizar conjuntos de tweets que tengan una serie de hashtags asociados y estén relacionados con un tema específico. 
+\vspace{2mm}\\
+Los modelos de aprendizaje profundo, se pueden enriquecer aún más con estas representaciones semánticamente ricas utilizando \textbf{ontologías o gramáticas} para captar eficazmente la opinión de los tweets. Se podría trabajar en el futuro para experimentar con diferentes número de gramáticas y variaciones de extracción de características para no trabajar siempre con un vocabulario fijo.
+\vspace{2mm}\\
+Definir gramáticas es una sobrecarga adicional al ajuste del modelo, por lo tanto, se pueden realizar investigaciones para superar ésto haciendo modelos inteligentes que puedan aprender las gramáticas específicas al contexto.
+\vspace{2mm}\\
+Esto también hace que el modelo sea flexible ya que, ese \textbf{mismo modelo} se puede \textbf{usar} para \textbf{diferentes dominios} simplemente \textbf{definiendo nuevas gramáticas} específicas del contexto para ese dominio.
 
+\item Otra idea sería realizar nuevos experimentos utilizando un enfoque \textbf{no supervisado} que se puede llevar a cabo utilizando el algoritmo de agrupación de $KMeans$ para encontrar el \textbf{punto de interrupción} sobre la puntuación de \textbf{opinión} en la que un tweet se clasifica como positivo o
+negativo asumiendo un conjunto de datos distribuido uniformemente (asume implícitamente la misma importancia para cada gramática).
+\vspace{2mm}\\
+Para ello, una idea sería utilizar diferentes \textbf{pesos asociados} a los términos de cada una de las gramáticas, que denotaría su papel al describir el nivel de positividad o negatividad del tweet que se compara con la gramática. 
+\vspace{2mm}\\
+Los pesos \textbf{mostrarían cuán positivos o negativos} son dichos términos. Las exageraciones y las subestimaciones también podrían ser ponderadas. Para encontrar el peso más adecuado (óptimo) se podrían usar redes neuronales.
 
+\end{itemize}
 
-
-
-
-
-
-
-
+Aunque siempre habrá un sesgo asociado al $corpus$ o a la fuente de datos, no es posible que todos los documentos pertenecientes a ésta expresen de forma detallada el sentimiento. 
 
 
 % BIBLIOGRAFIA
-\begin{thebibliography}{X}
+\begin{thebibliography}{0}
 
+\bibitem{Jain} A. P. Jain and P. Dandannavar, ``Application of machine learning techniques to sentiment analysis,'' 2016 2nd International Conference on Applied and Theoretical Computing and Communication Technology (iCATccT), Bangalore, 2016.
+
+\bibitem{Rokach} L. Rokach, Ensemble methods for classifiers, in: O. Maimon, L. Rokach (Eds.), Data Mining and Knowledge Discovery Handbook, Springer US, Boston,
+MA, 2005
+
+\bibitem{Kennedy} A. Kennedy, D. Inkpen, Sentiment classification of movie reviews using contextual valence shifters, Comput. Intell. 22 (2) (2006)
+
+\bibitem{OGNEVA} Ogneva, M. ``How Companies Can Use Sentiment Analysis to Improve
+Their Business''. Retrieved 2012-12-13.
+
+\bibitem{Bhuvan} M. S. Bhuvan, V. D. Rao, S. Jain, T. S. Ashwin and R. M. R. Guddeti, ``Semantic sentiment analysis using context specific grammar'' International Conference on Computing, Communication \& Automation, Noida, 2015.
+\vspace{6mm}\\
 \textbf{Preprocesado}
 \vspace{2mm}
 \\\url{https://github.com/tthustla/twitter_sentiment_analysis_part1/blob/master/Capstone_part2.ipynb}
@@ -975,48 +1008,7 @@ Sin embargo, en la oración ``No cabe duda de que la comida está buenísima''`,
 \\\url{https://en.wikipedia.org/wiki/Long_short-term_memory}
 \vspace{2mm}
 
+  
 \end{thebibliography}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \end{document}
-
-
-%####################################################################
-\begin{comment}
-
-\section{Problemas que presenta el análisis de sentimientos}
-
-Algunos de los problemas que enunciaremos a continuación están directamente relacionados o podríamos decir que son problemas que se heredan del Procesamiento del Lenguaje Natural, entre ellos:
-
-\begin{itemize}
-\item El sentimiento de las palabras a menudo depende del \textbf{contexto en el que estén ubicadas}, por ejemplo no tendría el mismo significado el verbo "morir" cuando nos referimos al fallecimiento de una persona (sentimientos negativos), que cuando utilizamos "morir de la risa" para denotar una situación graciosa (sentimientos positivos).
-
-\item La \textbf{ambigüedad} es uno de los elementos lingüísticos más sutiles y complicados de resolver dentro del PLN. Las personas somos capaces de deducirlos dentro de un contexto y en base a nuestras experiencias, pero los ordenadores no cuentan con demasiados recursos para ello. Esto se complica cuando el nivel de granuralidad cada vez es más fino (análisis a nivel de aspecto y entidad).
-
-\item  La \textbf{ironía} de las expresiones utilizadas por las personas o cualquier otra \textbf{expresión coloquial} que no se suele utilizar por mucha gente en general. 
-
-\item Detección de las \textbf{frases negadas}, ya que palabras como "no" pueden invertir la polaridad del resto de palabras a las que acompañan (y no siempre la negación invierte el sentimiendo de éstas). Por ejemplo: "La comida está buena", si añadimos el "no" delante del verbo cambiaría totalmente la polaridad de ésta. 
-
-Sin embargo, en la oración "No cabe duda de que la comida está buenísima", sigue teniendo la polaridad positiva.
-
-\end{itemize}
-
-\end{comment}
-%####################################################################
