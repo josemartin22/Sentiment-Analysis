@@ -125,10 +125,11 @@
 
 \section{¿Qué es el análisis de sentimientos?}
 
+\vspace{4mm}
 El \textbf{análisis de sentimientos} consiste en el uso de técnicas de Procesamiento del Lenguaje Natural, analítica de textos y lingüística computacional para identificar y extraer información subjetiva u opinión expresada en texto. 
 \vspace{2mm}\\
 Se utiliza en sistemas de recomendación, filtrado de mensajes/spam, en aplicaciones de negocios para predecir tendencias en función de las reseñas de los clientes o incluso seguir las opiniones sobre política, elaborar normas en función de la opinión de la gente (inteligencia de gobierno), etc...
-\vspace{2mm}\\
+\vspace{4mm}\\
 El análisis de sentimientos se puede llevar a cabo a 3 niveles distintos en función de la granularidad, profundidad o detalle que se desee conseguir. Estos niveles son:
 
 \begin{itemize}
@@ -143,33 +144,36 @@ El análisis de sentimientos se puede llevar a cabo a 3 niveles distintos en fun
 
 {\setlength{\parindent}{0cm}
 En nuestro caso nos \textbf{centraremos} en el primer nivel,  la \textbf{clasificación} de la \textbf{polaridad} de una frase de opinión (en concreto de tweets), esto es, decidir si en una frase el autor muestra un sentimiento positivo, negativo o neutro.}
+
+\section{Dataset para el desarrollo de la práctica}
+
+{\setlength{\parindent}{0cm}
+Se trabajará sobre el conjunto de datos en el dominio de Tweets del conjunto de datos \texttt{Sentiment140} que podemos descargalo de forma gratuita bien desde el enlace de Stanford o desde Google Drive, desde: \url{http://help.sentiment140.com/for-students/}. }
 \vspace{2mm}\\
-Se trabajará sobre el
-conjunto de datos en el dominio de Tweets del conjunto de datos \texttt{Sentiment140}, formado por
-1.6 millones de tweets en el conjunto de Train y 498 tweets en el conjunto de test etiquetados
-como polaridad positiva (clase ‘4’) y polaridad negativa (clase ‘0’). 
-\vspace{8mm}
+Está formado por 1.600.000 tweets en el \textbf{conjunto de Training} etiquetados como polaridad positiva (clase ‘4’) y polaridad negativa (clase ‘0’). 
 
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[scale=0.55]{images/train.png}
+\end{center}
+\caption{Distribución de las clases para datos de $training$}
+\end{figure}
 
-\section{Problemas que presenta el análisis de sentimientos}
+\vspace{2mm}
+{\setlength{\parindent}{0cm}
+En el \textbf{conjunto de Test} tenemos 498 tweets etiquetados como polaridad positiva (clase '4'), polaridad neutra (clase '2') y polaridad negativa (clase '0').}
 
-Algunos de los problemas que enunciaremos a continuación están directamente relacionados o podríamos decir que son problemas que se heredan del Procesamiento del Lenguaje Natural, entre ellos:
+\begin{figure}[htbp!]
+\begin{center}
+\includegraphics[scale=0.6]{images/test.png}
+\end{center}
+\caption{Distribución de las clases para datos de $test$}
+\end{figure}
 
-\begin{itemize}
-\item El sentimiento de las palabras a menudo depende del \textbf{contexto en el que estén ubicadas}, por ejemplo no tendría el mismo significado el verbo "morir" cuando nos referimos al fallecimiento de una persona (sentimientos negativos), que cuando utilizamos "morir de la risa" para denotar una situación graciosa (sentimientos positivos).
-
-\item La \textbf{ambigüedad} es uno de los elementos lingüísticos más sutiles y complicados de resolver dentro del PLN. Las personas somos capaces de deducirlos dentro de un contexto y en base a nuestras experiencias, pero los ordenadores no cuentan con demasiados recursos para ello. Esto se complica cuando el nivel de granuralidad cada vez es más fino (análisis a nivel de aspecto y entidad).
-
-\item  La \textbf{ironía} de las expresiones utilizadas por las personas o cualquier otra \textbf{expresión coloquial} que no se suele utilizar por mucha gente en general. 
-
-\item Detección de las \textbf{frases negadas}, ya que palabras como "no" pueden invertir la polaridad del resto de palabras a las que acompañan (y no siempre la negación invierte el sentimiendo de éstas). Por ejemplo: "La comida está buena", si añadimos el "no" delante del verbo cambiaría totalmente la polaridad de ésta. 
-
-Sin embargo, en la oración "No cabe duda de que la comida está buenísima", sigue teniendo la polaridad positiva.
-
-\end{itemize}
-
-
-
+{\setlength{\parindent}{0cm}
+Más adelante comentaremos que para el caso de evaluar los \textbf{modelos preentrenados}, que nos permiten clasificar documentos con estas 3 polaridades (positiva, neutra y negativa), \textbf{mantendremos todas las clases} de instancias del conjunto de datos de test para comprobar su funcionamiento en totalidad.}
+\vspace{2mm}\\
+Para el \textbf{resto de modelos} utilizados (en los que utilizaremos los datos de $training$ para el entrenamiento de éstos), \textbf{descartaremos} las instancias etiquetadas con polaridad \textbf{neutra} (clase '2') del conjunto de $test$, ya que en entrenamiento no tenemos de éstas.
 
 
 \chapter{Descripción de los algoritmos}
@@ -317,7 +321,11 @@ Podemos pensar que un modelo con mayor exactitud que otro es mejor. Eso sería a
 \[ F1 = (1 + \beta^{2})*  \frac{Precision * Recall}{(\beta^{2}*Precision) + Recall} \]
 
 \vspace{4mm}
-Se ayudará a penalizar los valores muy bajos en una u otra medida. Es frecuente que la precisión y el recall tengan el mismo peso en la fórmula, es decir, con un valor $\beta = 1$. A esta configuración se le conoce como \textbf{F1-score} y es el que \textbf{utilizaremos}.\\ Es de la forma:
+Se ayudará a penalizar los valores muy bajos en una u otra medida. Es frecuente que la precisión y el recall tengan el mismo peso en la fórmula, es decir, con un valor $\beta = 1$. A esta configuración se le conoce como \textbf{F1-score} y es el que \textbf{utilizaremos}.
+
+\clearpage
+
+Es de la forma:
 
 \[ \frac{2*Precision*Recall}{Precision + Recall} \]
 \vspace{4mm}
@@ -789,6 +797,7 @@ Clasificador & \textit{Accuracy} \\\hline
 VaderSentiment & 0.72 \\\hline
 TextBlob & 0.65 \\\hline
 Random Forest & 0.74 \\\hline
+\rowcolor{lightgray}
 Support Vector Machine & 0.75 \\\hline
 Naive Bayes & 0.74 \\\hline
 \end{tabular}}
@@ -812,14 +821,127 @@ que tenemos una mejor tasa de acierto a la hora de predecir los casos positivos 
 
 \section{Modelos más avanzados}
 
+A continuación, como ampliación de la práctica, \textbf{comentaremos} a grandes rasgos la \textbf{teoría} subyacente por debajo de estos modelos y formas de representación del texto que son más complejas pero con mejor comportamiento en general. Además \textbf{incluyo en la entrega el código} en \textit{jupyter-notebook} de los experimentos realizados que comentaré más adelante.
+
+
 \subsection{Word2vec}
-\subsection{BERT}
-\subsection{Modelos de Deep Learning (LSTM)}
+
+Es una herramienta que proporciona una implementación eficiente de las arquitecturas continuas de bolsa de palabras o \textit{bag of words} y omisión de la gramática para computar \textbf{representaciones vectoriales} de palabras que logran capturar el \textbf{significado semántico} de las mismas (a diferencia del esquema de representación tf-idf que consideran las palabras por separado como características).
+\vspace{2mm}\\
+Word2vec toma un $corpus$ de texto como entrada y produce los vectores de palabra como salida. 
+Primero se \textbf{construye un vocabulario} a partir de los datos del texto de entrenamiento y luego se \textbf{aprende la representación vectorial}. de las palabras. Las palabras resultantes pueden utilizarse como características para entrenar nuestros modelos de aprendizaje automático. 
+\vspace{2mm}\\
+Para entender cómo funciona la representación vectorial de una palabra, y poder encontrar palabras cercanas o similares a otras, se utiliza como concepto de \textbf{distancia} la \textbf{similitud coseno}. Por ejemplo si se ingresa la palabra 'España', las palabras similares a ésta estarán cerca de ella, como podrían ser 'Francia', 'Alemania' etc.
+\vspace{2mm}\\
+De la misma forma ocurriría con adjetivos. En la siguiente imagen se muestra como \textbf{aquellos} que \textbf{son positivos} están \textbf{más cerca entre sí}, de igual forma ocurre con los negativos. 
+
+
+\vspace{4mm}
+\begin{figure}[htbp!]
+\centering
+\includegraphics[scale=0.4]{images/w.png}
+\caption{Representación word2vec}
+\end{figure}
+\vspace{2mm}
+
+
+Para entrenar este modelo, se toman en consideración las palabras que rodean esa palabra de tamaño de ventana particular. Hay diferentes formas de derivar los vectores de incrustación de palabras. Word2vec es uno de esos métodos donde se utiliza el modelo de incrustaciones neuronales para aprender eso. Utiliza las siguientes \textbf{dos arquitecturas} para lograr esto.
+
+\begin{itemize}
+
+\item \textbf{Bolsa Contínua de Palabras o CBOW}: del inglés Continuous Bag of Words, se trata de un modelo que predice la palabra en consideración con las palabras dadas como contexto dentro de una ventana específica. La capa oculta tiene un número de dimensiones igual a las necesarias para representar la palabra actual en la capa de salida. 
+\vspace{2mm}\\
+En el siguiente ejemplo se muestra una ventana de tamaño 2 para predecir el vector de la palabra 'awesome' dada la oración: 'Restaurant was awesome this time’
+
+
+\vspace{4mm}
+\begin{figure}[htbp!]
+\centering
+\includegraphics[scale=0.4]{images/cbow.png}
+\caption{Arquitectura CBOW}
+\end{figure}
+\vspace{2mm}
+
+
+\item \textbf{Skip Gram}: Es opuesto a CBOW, se predice las palabras más similares o alineadas para las palabras de contexto circundantes en la ventana específica dada una palabra actual.
+A continuación se muestra el ejemplo anterior con un tamaño de ventana 2 para esta arquitectura:
+
+\begin{figure}[htbp!]
+\centering
+\includegraphics[scale=0.4]{images/skip.png}
+\caption{Arquitectura Skip Gram}
+\end{figure}
+\vspace{2mm}
+
+La capa de entrada contiene la palabra actual y la capa de salida contiene las palabras de contexto. La capa oculta contiene el número de dimensiones en las que queremos representar la palabra actual presente en la capa de entrada. 
+
+\end{itemize}
+
+\vspace{6mm}
+{\setlength{\parindent}{0cm}
+Centrándonos un poco más en nuestro problema a resolver:}
+\vspace{2mm}\\
+Los \textbf{vectores de palabras} también se pueden utilizar para \textbf{derivar clases de palabras} a partir de grandes conjuntos de datos. Esto se logra realizando \textbf{agrupaciones} de \textbf{K-medias} encima de los vectores de palabras. 
+\vspace{2mm}\\
+Podría resultarnos útil si se intenta agrupar todos los tweets con la misma polaridad para solventar de esta forma el problema de clasificación en función de la polaridad del documento. 
+
+
+\subsection{Modelos de Deep Learning}
+
+
+{\setlength{\parindent}{0cm}
+Una buena aproximación que obtiene un \textit{accuracy} de 0.79 con una red neuronal de tipo LSTM es la que se encuentra en el siguiente enlace:\\ }
+\url{https://www.kaggle.com/abhineethmishra/twitter-sentiment-analysis}\\
+Utiliza junto con este tipo de redes el modelo \textit{word2vec} y además entrena con toda la colección completa. 
+\vspace{2mm}\\
+No he podido realizar pruebas con este tipo de hibridación ya que los tiempos de cómputo se disparaban. Sin embargo, para probar un poco \textit{word2vec} he realizado un pequeño experimento junto a una simple red de tipo FFNN con 3 capas, pero el \textit{accuracy} obtenido apenas superaba el 0.35.
+\vspace{4mm}\\
+Otra \textbf{aproximación} que he realizado está basada en el código: \\
+\url{https://www.kaggle.com/oksanakalytenko/glove-lstm/notebook}\\
+en el que se obtiene un \textit{accuracy} de 0.77 entrenando con toda la colección completa. \\Utiliza de forma similar a la anterior, redes neuronales \textbf{LSTM} pero \textbf{junto a Glove}, que es un \textit{word embedding} desarrollado por la Universidad de Standford.
+\vspace{2mm}\\
+\textbf{En mi caso he obtenido} un \textit{accuracy} de \textbf{0.71} entrenando con un subconjunto de entrenamiento del 3.75\% total (que son 60.000 instancias). Pese a utilizar tan pocos datos, ya tardó unos 42 minutos aprox. en ejecutar. La gráficas de aprendizaje obtenidas son:
+
+\begin{wrapfigure}{r}{0.5\textwidth} %this figure will be at the right
+    \centering
+	\includegraphics[scale=0.6]{images/av1.png}
+    \caption{Gráficas de aprendizaje}
+\end{wrapfigure}
+
+\vspace{4mm}
+Podemos observar que pese al parecer estar presente el sobreaprendizaje al inicio y en la sexta época de aprendizaje, al final ese incremento de rendimiento en training se ve reflejado en validación y no hay demasiada varianza o distancia entre ambas lineas, por lo que al final obtenemos un buen rendimiento del modelo entrenado.
+\vspace{2mm}\\
+Las redes LSTM al poder \textbf{retroalimentarse} pueden reaprender más rápidamente por ello obtenemos mejores resultados que con las FFNN del experimento anterior.
+
+
+\chapter{Planteamiento de futuro}
+
+\section{Problemas que presenta el análisis de sentimientos}
+
+Algunos de los problemas que enunciaremos a continuación están directamente relacionados o podríamos decir que son problemas que se heredan del Procesamiento del Lenguaje Natural, entre ellos:
+
+\begin{itemize}
+\item El sentimiento de las palabras a menudo depende del \textbf{contexto en el que estén ubicadas}, por ejemplo no tendría el mismo significado el verbo ``morir'' cuando nos referimos al fallecimiento de una persona (sentimientos negativos), que cuando utilizamos ``morir de la risa'' para denotar una situación graciosa (sentimientos positivos).
+
+\item La \textbf{ambigüedad} es uno de los elementos lingüísticos más sutiles y complicados de resolver dentro del PLN. Las personas somos capaces de deducirlos dentro de un contexto y en base a nuestras experiencias, pero los ordenadores no cuentan con demasiados recursos para ello. Esto se complica cuando el nivel de granuralidad cada vez es más fino (análisis a nivel de aspecto y entidad).
+
+\item  La \textbf{ironía} de las expresiones utilizadas por las personas o cualquier otra \textbf{expresión coloquial} que no se suele utilizar por mucha gente en general. 
+
+\item Detección de las \textbf{frases negadas}, ya que palabras como ``no'' pueden invertir la polaridad del resto de palabras a las que acompañan (y no siempre la negación invierte el sentimiendo de éstas). 
+\vspace{2mm}\\
+Por ejemplo: ``La comida está buena'', si añadimos el ``no'' delante del verbo cambiaría totalmente la polaridad de ésta. 
+
+Sin embargo, en la oración ``No cabe duda de que la comida está buenísima''`, sigue teniendo la polaridad positiva.
+
+\end{itemize}
+
+\clearpage
+
+\section{¿Qué harías si puedes trabajar durante 6 meses en el problema?}
 
 
 
 
-\chapter{Trabajo Futuro}
 
 
 
@@ -831,14 +953,29 @@ que tenemos una mejor tasa de acierto a la hora de predecir los casos positivos 
 
 
 
+% BIBLIOGRAFIA
+\begin{thebibliography}{X}
 
+\textbf{Preprocesado}
+\vspace{2mm}
+\\\url{https://github.com/tthustla/twitter_sentiment_analysis_part1/blob/master/Capstone_part2.ipynb}
+\vspace{2mm}
+\\\url{https://medium.com/@himanshu_23732/sentiment-analysis-with-sentiment140-e6b0c789e0ce}
+\vspace{2mm}
+\\\url{http://openaccess.uoc.edu/webapps/o2/bitstream/10609/81435/6/jsobrinosTFM0618memoria.pdf}
+\vspace{2mm}
+\\\url{}
+\vspace{2mm}\\
+\\\textbf{Modelos Avanzados}
+\vspace{2mm}
+\\\url{https://code.google.com/archive/p/word2vec/}
+\vspace{2mm}
+\\\url{https://medium.com/swlh/sentiment-classification-using-word-embeddings-word2vec-aedf28fbb8ca}
+\vspace{2mm}
+\\\url{https://en.wikipedia.org/wiki/Long_short-term_memory}
+\vspace{2mm}
 
-
-
-
-
-
-
+\end{thebibliography}
 
 
 
